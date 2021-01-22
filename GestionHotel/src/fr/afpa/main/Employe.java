@@ -1,4 +1,4 @@
-package fr.apfa.main;
+package fr.afpa.main;
 
 public class Employe {
 
