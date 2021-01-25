@@ -2,11 +2,11 @@ package fr.afpa.main;
 
 public class Hotel {
 
-	private Chambre[] chambres;
+	private Chambre[] listeChambres;
 	private float chiffreAffaire;
 	
 	public Hotel(Chambre[] ch , float ca) {
-		chambres = ch;
+		listeChambres = ch;
 		chiffreAffaire = ca;
 	}
 	
@@ -15,15 +15,15 @@ public class Hotel {
 	}
 
 	public Chambre[] getChambres() {
-		return chambres;
+		return listeChambres;
 	}
 	public void setChambres(Chambre[] chambres) {
-		this.chambres = chambres;
+		listeChambres = chambres;
 	}
 	public float getChiffreAffaire() {
 		return chiffreAffaire;
 	}
-	public void setChiffreAffaire(float chiffreAffaire) {
-		this.chiffreAffaire = chiffreAffaire;
+	public void setChiffreAffaire(float ca) {
+		chiffreAffaire = ca;
 	}
 }
