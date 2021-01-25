@@ -29,7 +29,7 @@ public class Main {
 		for (int i = 0; i < client1.getClientId().length; i++) {
 			if (client1.getClientId()[i] == entrer) {
 				gotaccount = true;
-				System.out.print("Connecté!");
+				System.out.print("Connecte!");
 			}
 			if (i == client1.getClientId().length - 1 && gotaccount == false) {
 				inscription = true;
@@ -65,7 +65,7 @@ public class Main {
 			nbChambre = nbChambre + Integer.parseInt(infosChambre[5]);
 			
 		}
-		System.out.println(nbChambre); //Check up nombre total de chambre
+		//System.out.println(nbChambre); //Check up nombre total de chambre
 		Chambre[] enregistrementChambre = new Chambre[nbChambre];
 		hotel = new Hotel(enregistrementChambre);
 		chambre = new Chambre();
@@ -74,7 +74,6 @@ public class Main {
 
 			for (int j = 0; j < Integer.parseInt(infosChambre[5]) ; j++) {
 				numeroChambre++;
-
 				hotel.getListeChambres()[numeroChambre-1] = new Chambre();
 				hotel.getListeChambres()[numeroChambre-1].setNumero(numeroChambre);
 				hotel.getListeChambres()[numeroChambre-1].setNom(infosChambre[0]);
@@ -87,7 +86,7 @@ public class Main {
 				
 			}
 		}
-		hotel.afficheEtatHotel(hotel);
+		
 
 		
 		if(entrer.length() == 10 && Entier.isInt(entrer)){
@@ -107,10 +106,18 @@ public class Main {
 	        	  System.out.println("Quels informations recherchez vous ? :");
 	      		  key = saisieUtilisateur.next();
 	      		  switch(key) {
-	      		    case "A": break;
-		      		case "B": break;
-		      		case "C": break;
-		      		case "D": break;
+	      		    case "A":
+	      		    	hotel.afficheEtatHotel(hotel);
+	      		    	break;
+		      		case "B": 
+		      			hotel.afficherNbResa();
+		      			break;
+		      		case "C": 
+		      			hotel.afficherNbLibre();
+		      			break;
+		      		case "D": 
+		      			hotel.afficherPremiereChambre(hotel);
+		      			break;
 		      		case "E": break;
 	      		
 	      		  }

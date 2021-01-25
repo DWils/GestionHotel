@@ -91,8 +91,20 @@ public class Hotel {
 		Chambre ch = new Chambre();
 		System.out.println(listeChambres.length - ch.getReservee() - ch.getOcuppee());
 	}
-	public void afficherPremiereChambre() {
+	public void afficherPremiereChambre(Hotel hotel) {
 		
+		for (int i = 0; i < hotel.listeChambres.length; i++) {
+			int compteur = 0 ;
+			for (int j = 0; j < hotel.getListeChambres()[i].getListeReservation().length; j++) {
+				if(hotel.getListeChambres()[i].getListeReservation()[j] == null ) {
+					compteur++; 
+				}
+			}
+			if (compteur == 3) {
+				System.out.println(hotel.getListeChambres()[i]);
+			}
+			
+		}
 	}
 }
 
