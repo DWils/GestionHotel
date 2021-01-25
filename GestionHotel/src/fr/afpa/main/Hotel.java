@@ -68,8 +68,10 @@ public class Hotel {
 			afficheOptions(listeChambres[i].getOptions());
 			if(hotel.getListeChambres()[i].getListeReservation()[0] != null) {
 				for (int j = 0; j < hotel.getListeChambres()[i].getListeReservation().length; j++) {
-					
-				}
+					System.out.println(hotel.getListeChambres()[i].getListeReservation()[i].getCode());	
+				}			
+			}
+			else {
 				System.out.println("----------------------------------------------");
 				System.out.println("Pas de réservation en cours");
 			}
