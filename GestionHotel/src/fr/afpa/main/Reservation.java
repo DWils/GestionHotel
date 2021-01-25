@@ -6,6 +6,7 @@ public class Reservation {
 	private String code;
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
+	private Client client;
 	
 	public Reservation(String c , LocalDate deb , LocalDate fin){
 		code =  c;
