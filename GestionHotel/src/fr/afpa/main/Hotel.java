@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 package fr.afpa.main;
 
 public class Hotel {
@@ -94,3 +95,42 @@ public class Hotel {
 		
 	}
 }
+=======
+//package fr.afpa.main;
+//
+//public class Hotel {
+//
+//	private Chambre[] chambres;
+//	private float chiffreAffaire;
+//	
+//	public Hotel(Chambre[] ch , float ca) {
+//		chambres = ch;
+//		chiffreAffaire = ca;
+//	}
+//	
+//	public Hotel() {
+//		
+//	}
+//
+//	public Chambre[] getChambres() {
+//		return chambres;
+//	}
+//	public void setChambres(Chambre[] chs) {
+//		chambres = chs;
+//	}
+//	public float getChiffreAffaire() {
+//		return chiffreAffaire;
+//	}
+//	public void setChiffreAffaire(float ca) {
+//		chiffreAffaire = ca;
+//	}
+//
+//	public void afficheToutLesChambres() {
+//		for (Chambre chambre : chambres) {
+//			
+//			System.out.println(chambre.getNumero()+" "+chambre.getNom()+" "+chambre.getSuperficie()  );
+//		}
+//		
+//	}
+//}
+>>>>>>> Stashed changes
