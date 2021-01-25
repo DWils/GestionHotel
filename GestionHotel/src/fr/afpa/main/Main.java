@@ -77,19 +77,24 @@ public class Main {
 		}
 		
 		for (Chambre chambre2 : enregistrementChambre) {
-			System.out.println(chambre2.getNumero() + chambre2.getNom());
+			System.out.println(chambre2.getNumero() + chambre2.getNom());}
+		
+		for (int i = 0; i < client1.getClientId().length; i++) {
+		
 		}
+		
+		
 		 
 	     if(entrer.length() == 10 && Entier.isInt(entrer)){
 	          client = true ;
-	          System.out.print("________________________PORTAIL CLIENT_______________________");
+	          System.out.print("________________________PORTAIL CLIENT__________________________");
 	          
 	          
 	      }
 	     if(entrer.startsWith("GH") && entrer.length() == 6) {
 	         employes = true;
 	         System.out.print("________________________PORTAIL EMPLOYEE_______________________");
-	         System.out.println("Entrer dans le menu : y | n");
+	        
 	         String key ="";
 	         while (!key.equals("Q")) {
 	        	 
