@@ -32,4 +32,26 @@ public class Hotel {
 	public void setChiffreAffaire(float ca) {
 		chiffreAffaire = ca;
 	}
+
+	public void afficheListeChambre(Hotel hotel) {
+		for (int i = 0; i < listeChambres.length; i++) {
+			System.out.println("----------------------------------------------");
+			System.out.println("Chambre n° " 
+								+ listeChambres[i].getNumero() + " " 
+								+ listeChambres[i].getNom() + "\n "
+								+ listeChambres[i].getOccupation() + "\n "
+								+ "Superficie : " + listeChambres[i].getSuperficie() + "\n "
+								+ "Vue : " + listeChambres[i].getVue() + "\n "
+								+ "Liste options :");
+			afficheOptions(listeChambres[i].getOptions());
+			System.out.println("----------------------------------------------");
+		}
+		
+	}
+	public void afficheOptions(String[] options) {
+		for (int i = 0; i < options.length; i++) {
+			System.out.println("   " + options[i]);
+			
+		}
+	}
 }

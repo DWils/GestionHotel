@@ -9,17 +9,19 @@ public class Chambre {
 	private float tarif;
 	private String[] options;
 	private String occupation;
-	private String etat;
+	//private String etat;
+	private Reservation[] listeReservation;
 	
 	
-	public Chambre(int num , String n ,String sup, String v ,float t , String[] opts ) {
+	public Chambre(int num , String n ,String sup, String v ,float t , String[] opts, Reservation[] listeR ) {
 		numero = num;
 		nom = n;
 		superficie = sup;
 		vue = v;
 		tarif = t;
 		options = opts;
-		setEtat("libre");
+		listeReservation = listeR;
+		
 	}
 	
 	public Chambre() {
@@ -29,7 +31,7 @@ public class Chambre {
 		vue = new String("");;
 		tarif = 0;
 		options = new String[10];
-		setEtat("libre");
+		listeReservation = new Reservation[3];
 	}
 
 	public int getNumero() {
@@ -80,13 +82,13 @@ public class Chambre {
 		occupation = oc;
 	}
 
-	public String getEtat() {
-		return etat;
-	}
+//	public String getEtat() {
+//		return etat;
+//	}
 
-	public void setEtat(String et) {
-		etat = et;
-	}
+//	public void setEtat(String et) {
+//		etat = et;
+//	}
 
 	public String getVue() {
 		return vue;
@@ -94,5 +96,13 @@ public class Chambre {
 
 	public void setVue(String v) {
 		vue = v;
+	}
+
+	public Reservation[] getListeReservation() {
+		return listeReservation;
+	}
+
+	public void setListeReservation(Reservation[] listeR) {
+		listeReservation = listeR;
 	}
 }

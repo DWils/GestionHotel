@@ -70,13 +70,18 @@ public class Main {
 				hotel.getChambres()[numeroChambre-1] = new Chambre();
 				hotel.getChambres()[numeroChambre-1].setNumero(numeroChambre);
 				hotel.getChambres()[numeroChambre-1].setNom(infosChambre[0]);
+				hotel.getChambres()[numeroChambre-1].setSuperficie(infosChambre[1]);
+				hotel.getChambres()[numeroChambre-1].setVue(infosChambre[2]);
+				hotel.getChambres()[numeroChambre-1].setOccupation(infosChambre[3]);
+				hotel.getChambres()[numeroChambre-1].setTarif(Float.parseFloat(infosChambre[4]));
+				listeOptions = infosChambre[6].split("\\|");
+				hotel.getChambres()[numeroChambre-1].setOptions(listeOptions);
+				
 				
 			}
 		}
+		hotel.afficheListeChambre(hotel);
 		
-		for (Chambre chambre2 : hotel.getChambres()) {
-			System.out.println(chambre2.getNumero() + chambre2.getNom());
-		}
 		
 		
 	}
