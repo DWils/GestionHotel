@@ -1,7 +1,7 @@
 package fr.afpa.main;
 
 import java.util.Scanner;
-
+//bon fichier
 public class Inscription {
 	private String numero;
 	private String prenom;

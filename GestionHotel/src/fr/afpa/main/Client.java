@@ -4,9 +4,6 @@ public class Client {
 	private String nom;
 	private String prenom;
 	private String telephone;
-<<<<<<< Updated upstream
-	private String listReservation;
-=======
 	
 	public String getPrenom() {
 		return prenom;
@@ -21,5 +18,4 @@ public class Client {
 		this.nom = nom;
 	}
 	
->>>>>>> Stashed changes
 }
