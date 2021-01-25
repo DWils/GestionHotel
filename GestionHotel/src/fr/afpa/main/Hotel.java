@@ -20,10 +20,10 @@ public class Hotel {
 		chiffreAffaire = (float)0;
 	}
 
-	public Chambre[] getChambres() {
+	public Chambre[] getListeChambres() {
 		return listeChambres;
 	}
-	public void setChambres(Chambre[] chambres) {
+	public void setListeChambres(Chambre[] chambres) {
 		listeChambres = chambres;
 	}
 	public float getChiffreAffaire() {
@@ -34,14 +34,14 @@ public class Hotel {
 	}
 
 	public void afficheListeChambre(Hotel hotel) {
-		for (int i = 0; i < listeChambres.length; i++) {
+		for (int i = 0; i < hotel.getListeChambres().length; i++) {
 			System.out.println("----------------------------------------------");
 			System.out.println("Chambre n° " 
-								+ listeChambres[i].getNumero() + " " 
-								+ listeChambres[i].getNom() + "\n "
-								+ listeChambres[i].getOccupation() + "\n "
-								+ "Superficie : " + listeChambres[i].getSuperficie() + "\n "
-								+ "Vue : " + listeChambres[i].getVue() + "\n "
+								+ hotel.getListeChambres()[i].getNumero() + " " 
+								+ hotel.getListeChambres()[i].getNom() + "\n "
+								+ hotel.getListeChambres()[i].getOccupation() + "\n "
+								+ "Superficie : " + hotel.getListeChambres()[i].getSuperficie() + "\n "
+								+ "Vue : " + hotel.getListeChambres()[i].getVue() + "\n "
 								+ "Liste options :");
 			afficheOptions(listeChambres[i].getOptions());
 			System.out.println("----------------------------------------------");
@@ -52,6 +52,28 @@ public class Hotel {
 		for (int i = 0; i < options.length; i++) {
 			System.out.println("   " + options[i]);
 			
+		}
+	}
+	
+	public void afficheEtatHotel(Hotel hotel) {
+		for (int i = 0; i < hotel.getListeChambres().length; i++) {
+			System.out.println("----------------------------------------------");
+			System.out.println("Chambre n° " 
+								+ hotel.getListeChambres()[i].getNumero() + " " 
+								+ hotel.getListeChambres()[i].getNom() + "\n "
+								+ hotel.getListeChambres()[i].getOccupation() + "\n "
+								+ "Superficie : " + hotel.getListeChambres()[i].getSuperficie() + "\n "
+								+ "Vue : " + hotel.getListeChambres()[i].getVue() + "\n "
+								+ "Liste options :");
+			afficheOptions(listeChambres[i].getOptions());
+			if(hotel.getListeChambres()[i].getListeReservation()[0] != null) {
+				for (int j = 0; j < hotel.getListeChambres()[i].getListeReservation().length; j++) {
+					
+				}
+				System.out.println("----------------------------------------------");
+				System.out.println("Pas de réservation en cours");
+			}
+			System.out.println("----------------------------------------------");
 		}
 	}
 }

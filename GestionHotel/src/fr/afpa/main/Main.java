@@ -74,20 +74,20 @@ public class Main {
 
 			for (int j = 0; j < Integer.parseInt(infosChambre[5]) ; j++) {
 				numeroChambre++;
-				hotel.getChambres()[numeroChambre-1] = new Chambre();
-				hotel.getChambres()[numeroChambre-1].setNumero(numeroChambre);
-				hotel.getChambres()[numeroChambre-1].setNom(infosChambre[0]);
-				hotel.getChambres()[numeroChambre-1].setSuperficie(infosChambre[1]);
-				hotel.getChambres()[numeroChambre-1].setVue(infosChambre[2]);
-				hotel.getChambres()[numeroChambre-1].setOccupation(infosChambre[3]);
-				hotel.getChambres()[numeroChambre-1].setTarif(Float.parseFloat(infosChambre[4]));
+				hotel.getListeChambres()[numeroChambre-1] = new Chambre();
+				hotel.getListeChambres()[numeroChambre-1].setNumero(numeroChambre);
+				hotel.getListeChambres()[numeroChambre-1].setNom(infosChambre[0]);
+				hotel.getListeChambres()[numeroChambre-1].setSuperficie(infosChambre[1]);
+				hotel.getListeChambres()[numeroChambre-1].setVue(infosChambre[2]);
+				hotel.getListeChambres()[numeroChambre-1].setOccupation(infosChambre[3]);
+				hotel.getListeChambres()[numeroChambre-1].setTarif(Float.parseFloat(infosChambre[4]));
 				listeOptions = infosChambre[6].split("\\|");
-				hotel.getChambres()[numeroChambre-1].setOptions(listeOptions);
+				hotel.getListeChambres()[numeroChambre-1].setOptions(listeOptions);
 				
 				
 			}
 		}
-		hotel.afficheListeChambre(hotel);
+		hotel.afficheEtatHotel(hotel);
 		
 		if(entrer.length() == 10 && Entier.isInt(entrer)){
 	          client = true ;
