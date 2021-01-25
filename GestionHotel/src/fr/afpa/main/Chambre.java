@@ -1,4 +1,7 @@
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 package fr.afpa.main;
 
 public class Chambre {
@@ -9,8 +12,14 @@ public class Chambre {
 	private float tarif;
 	private String[] options;
 	private String occupation;
-	//private String etat;
+<<<<<<< Updated upstream
 	private Reservation[] listeReservation;
+	private static int reservee;
+	private static int ocuppee;
+=======
+	private String etat;
+	public static Chambre[] hotel;
+>>>>>>> Stashed changes
 	
 	
 	public Chambre(int num , String n ,String sup, String v ,float t , String[] opts, Reservation[] listeR ) {
@@ -104,5 +113,21 @@ public class Chambre {
 
 	public void setListeReservation(Reservation[] listeR) {
 		listeReservation = listeR;
+	}
+
+	public static int getReservee() {
+		return reservee;
+	}
+
+	public static void setReservee(int reservee) {
+		Chambre.reservee = reservee;
+	}
+
+	public static int getOcuppee() {
+		return ocuppee;
+	}
+
+	public static void setOcuppee(int oc) {
+		ocuppee = oc;
 	}
 }
