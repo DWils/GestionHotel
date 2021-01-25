@@ -10,8 +10,14 @@ public class Hotel {
 		chiffreAffaire = ca;
 	}
 	
+	public Hotel(Chambre[] ch) {
+		listeChambres = ch;
+		chiffreAffaire = (float)0;
+	}
+	
 	public Hotel() {
-		
+		listeChambres = new Chambre[65];
+		chiffreAffaire = (float)0;
 	}
 
 	public Chambre[] getChambres() {

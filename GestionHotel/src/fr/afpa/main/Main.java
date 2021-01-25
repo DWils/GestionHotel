@@ -13,6 +13,7 @@ public class Main {
 		Inscription client1 = new Inscription();
 		boolean gotaccount = false;
 		boolean inscription = false;
+		Hotel hotel = new Hotel();
 
 		Scanner saisieUtilisateur = new Scanner(System.in);
 		System.out.print("Saisir votre numero d'identification:");
@@ -59,20 +60,21 @@ public class Main {
 		}
 		System.out.println(nbChambre); //Check up nombre total de chambre
 		Chambre[] enregistrementChambre = new Chambre[nbChambre];
+		hotel = new Hotel(enregistrementChambre);
 		chambre = new Chambre();
 		for (int i = 1; i < dataChambres.length; i++) {
 			infosChambre = dataChambres[i].split(";");
 
 			for (int j = 0; j < Integer.parseInt(infosChambre[5]) ; j++) {
 				numeroChambre++;
-				enregistrementChambre[numeroChambre-1] = new Chambre();
-				enregistrementChambre[numeroChambre-1].setNumero(numeroChambre);
-				enregistrementChambre[numeroChambre-1].setNom(infosChambre[0]);
+				hotel.getChambres()[numeroChambre-1] = new Chambre();
+				hotel.getChambres()[numeroChambre-1].setNumero(numeroChambre);
+				hotel.getChambres()[numeroChambre-1].setNom(infosChambre[0]);
 				
 			}
 		}
 		
-		for (Chambre chambre2 : enregistrementChambre) {
+		for (Chambre chambre2 : hotel.getChambres()) {
 			System.out.println(chambre2.getNumero() + chambre2.getNom());
 		}
 		

@@ -6,13 +6,13 @@ public class Chambre {
 	private String nom;
 	private String superficie;
 	private String vue;
-	private double tarif;
+	private float tarif;
 	private String[] options;
 	private String occupation;
 	private String etat;
 	
 	
-	public Chambre(int num , String n ,String sup, String v ,double t , String[] opts ) {
+	public Chambre(int num , String n ,String sup, String v ,float t , String[] opts ) {
 		numero = num;
 		nom = n;
 		superficie = sup;
@@ -23,7 +23,13 @@ public class Chambre {
 	}
 	
 	public Chambre() {
-		
+		numero = 0;
+		nom = new String("");
+		superficie = new String("");;
+		vue = new String("");;
+		tarif = 0;
+		options = new String[10];
+		setEtat("libre");
 	}
 
 	public int getNumero() {
@@ -58,7 +64,7 @@ public class Chambre {
 		nom = n;
 	}
 	
-	public void setTarif(double tf) {
+	public void setTarif(float tf) {
 		tarif = tf;
 	}
 	
