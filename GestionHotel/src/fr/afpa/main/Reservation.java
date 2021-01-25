@@ -8,10 +8,11 @@ public class Reservation {
 	private LocalDate dateFin;
 	private Client client;
 	
-	public Reservation(String c , LocalDate deb , LocalDate fin){
+	public Reservation(String c , LocalDate deb , LocalDate fin, Client cl){
 		code =  c;
 		dateDebut = deb;
 		dateFin = fin;
+		client = cl;
 	}
 		
 	public String getCode() {
@@ -43,7 +44,7 @@ public class Reservation {
 		return client;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public void setClient(Client cl) {
+		client = cl;
 	}
 }
