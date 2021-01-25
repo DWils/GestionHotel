@@ -9,8 +9,9 @@ public class Chambre {
 	private float tarif;
 	private String[] options;
 	private String occupation;
-	//private String etat;
 	private Reservation[] listeReservation;
+	private static int reservee;
+	private static int ocuppee;
 	
 	
 	public Chambre(int num , String n ,String sup, String v ,float t , String[] opts, Reservation[] listeR ) {

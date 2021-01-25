@@ -60,7 +60,8 @@ public class Hotel {
 			System.out.println("----------------------------------------------");
 			System.out.println("Chambre n° " 
 								+ hotel.getListeChambres()[i].getNumero() + " " 
-								+ hotel.getListeChambres()[i].getNom() + "\n "
+								+ hotel.getListeChambres()[i].getNom() + " " 
+								+ hotel.getListeChambres()[i].getTarif() + " euros" + "\n "
 								+ hotel.getListeChambres()[i].getOccupation() + "\n "
 								+ "Superficie : " + hotel.getListeChambres()[i].getSuperficie() + "\n "
 								+ "Vue : " + hotel.getListeChambres()[i].getVue() + "\n "
@@ -68,7 +69,9 @@ public class Hotel {
 			afficheOptions(listeChambres[i].getOptions());
 			if(hotel.getListeChambres()[i].getListeReservation()[0] != null) {
 				for (int j = 0; j < hotel.getListeChambres()[i].getListeReservation().length; j++) {
-					System.out.println(hotel.getListeChambres()[i].getListeReservation()[i].getCode());	
+					System.out.println(hotel.getListeChambres()[i].getListeReservation()[i].getCode() + " " + 
+									   hotel.getListeChambres()[i].getListeReservation()[i].getDateDebut() + " - " +
+									   hotel.getListeChambres()[i].getListeReservation()[i].getDateFin() );	
 				}			
 			}
 			else {

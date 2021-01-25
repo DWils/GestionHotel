@@ -3,24 +3,16 @@ package fr.afpa.main;
 import java.time.LocalDate;
 
 public class Reservation {
-	private String code;
+
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
 	private Client client;
 	
-	public Reservation(String c , LocalDate deb , LocalDate fin, Client cl){
-		code =  c;
+	public Reservation(LocalDate deb , LocalDate fin, Client cl){
+	
 		dateDebut = deb;
 		dateFin = fin;
 		client = cl;
-	}
-		
-	public String getCode() {
-		return code;
-	}
-	
-	public void setCode(String c) {
-		code = c;
 	}
 	
 	public LocalDate getDateDebut(){
