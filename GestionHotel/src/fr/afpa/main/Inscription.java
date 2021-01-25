@@ -1,5 +1,7 @@
 package fr.afpa.main;
 
+import java.util.Scanner;
+
 public class Inscription {
 	private String numero;
 	private String prenom;
@@ -25,4 +27,13 @@ public class Inscription {
 		return clientId;
 	}
 	
+	public static Client inscrire() {
+		Scanner saisieUtilisateur = new Scanner(System.in);
+		Client user = new Client();
+		System.out.print("Inscrivez vous, nom : ");
+		user.setNom(saisieUtilisateur.nextLine());
+		System.out.print("Inscrivez vous, prenom : ");
+		user.setPrenom(saisieUtilisateur.nextLine());
+		return user;
+	}
 }
