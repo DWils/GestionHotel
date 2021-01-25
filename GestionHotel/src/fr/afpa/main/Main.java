@@ -10,6 +10,8 @@ public class Main {
 		Chambre chambre = new Chambre();
 		int numeroChambre = 0;
 		int nbChambre = 0;
+		boolean employes = false;
+		boolean client = false;
 		Inscription client1 = new Inscription();
 		boolean gotaccount = false;
 		boolean inscription = false;
@@ -18,6 +20,7 @@ public class Main {
 		System.out.print("Saisir votre numero d'identification:");
 		client1.setId(saisieUtilisateur.nextLine());
 		String entrer = client1.getId();
+		
 
 		/*
 		*/
@@ -39,6 +42,7 @@ public class Main {
 
 			}
 		}
+		
 
 		String[] listeChambres = { "Type chambre;Taille;Vues;Occupation;tarif;Nombre;Options",
 				"Chambre Vue Piscine;44 mètres carrés;Piscine Centrale;2 adultes et 2 enfants de moins de 12 ans;300;7;Fer et planche à repasser sur demande|Téléphone |Télévision par câble|Climatisation|Bouilloire électrique|Concierge 24h/24",
@@ -75,7 +79,35 @@ public class Main {
 		for (Chambre chambre2 : enregistrementChambre) {
 			System.out.println(chambre2.getNumero() + chambre2.getNom());
 		}
-		
+		 
+	     if(entrer.length() == 10 && Entier.isInt(entrer)){
+	          client = true ;
+	          System.out.print("________________________PORTAIL CLIENT_______________________");
+	          
+	          
+	      }
+	     if(entrer.startsWith("GH") && entrer.length() == 6) {
+	         employes = true;
+	         System.out.print("________________________PORTAIL EMPLOYEE_______________________");
+	         System.out.println("Entrer dans le menu : y | n");
+	         String key ="";
+	         while (!key.equals("Q")) {
+	        	 
+	        	  System.out.println("Quels informations recherchez vous ? :");
+	      		  key = saisieUtilisateur.next();
+	      		  switch(key) {
+	      		    case "A": break;
+		      		case "B": break;
+		      		case "C": break;
+		      		case "D": break;
+		      		case "E": break;
+	      		
+	      		  }
+	          }
+	          
+	          
+
+	      }
 		
 	}
 
