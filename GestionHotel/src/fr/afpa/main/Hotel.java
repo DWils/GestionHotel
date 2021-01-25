@@ -69,7 +69,8 @@ public class Hotel {
 			afficheOptions(listeChambres[i].getOptions());
 			if(hotel.getListeChambres()[i].getListeReservation()[0] != null) {
 				for (int j = 0; j < hotel.getListeChambres()[i].getListeReservation().length; j++) {
-					System.out.println(hotel.getListeChambres()[i].getListeReservation()[i].getCode() + " " + 
+					System.out.println("----------------------------------------------");
+					System.out.println(hotel.getListeChambres()[i].getListeReservation()[i].getClient().getNom() + " " + 
 									   hotel.getListeChambres()[i].getListeReservation()[i].getDateDebut() + " - " +
 									   hotel.getListeChambres()[i].getListeReservation()[i].getDateFin() );	
 				}			
@@ -80,5 +81,16 @@ public class Hotel {
 			}
 			System.out.println("----------------------------------------------");
 		}
+	}
+	public void afficherNbResa() {
+		Chambre ch = new Chambre();
+		System.out.println(ch.getReservee());
+	}
+	public void afficherNbLibre() {
+		Chambre ch = new Chambre();
+		System.out.println(listeChambres.length - ch.getReservee() - ch.getOcuppee());
+	}
+	public void afficherPremiereChambre() {
+		
 	}
 }

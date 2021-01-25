@@ -106,4 +106,20 @@ public class Chambre {
 	public void setListeReservation(Reservation[] listeR) {
 		listeReservation = listeR;
 	}
+
+	public static int getReservee() {
+		return reservee;
+	}
+
+	public static void setReservee(int reservee) {
+		Chambre.reservee = reservee;
+	}
+
+	public static int getOcuppee() {
+		return ocuppee;
+	}
+
+	public static void setOcuppee(int oc) {
+		ocuppee = oc;
+	}
 }
