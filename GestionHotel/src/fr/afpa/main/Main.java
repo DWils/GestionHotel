@@ -2,9 +2,13 @@ package fr.afpa.main;
 
 import java.util.Scanner;
 
+import javax.sound.midi.Soundbank;
+
 public class Main {
 
 	public static void main(String[] args) {
+		Inscription.login();
+		Client cl = new Client();
 		String[] infosChambre = null;
 		String[] listeOptions = null;
 		Hotel hotel = new Hotel();
@@ -15,6 +19,8 @@ public class Main {
 		boolean inscription = false;
 
 		Scanner saisieUtilisateur = new Scanner(System.in);
+		
+		
 		System.out.print("Saisir votre numero d'identification:");
 		client1.setId(saisieUtilisateur.nextLine());
 		String entrer = client1.getId();
@@ -35,9 +41,22 @@ public class Main {
 		for (int i = 0; i < client1.getClientId().length; i++) {
 			if (client1.getClientId()[i] == null && inscription == true) {
 				client1.getClientId()[i] = client1.getId();
-				inscription = false;
 
 			}
+<<<<<<< Updated upstream
+=======
+		}
+		if(inscription == true) 
+		{
+			cl= Inscription.inscrire();
+			System.out.println("Votre nom est : "+ cl.getNom());
+			
+			
+			
+		}
+		
+		
+>>>>>>> Stashed changes
 
 			String[] listeChambres = { "Type chambre;Taille;Vues;Occupation;tarif;Nombre;Options",
 					"Chambre Vue Piscine;44 mètres carrés;Piscine Centrale;2 adultes et 2 enfants de moins de 12 ans;300;7;Fer et planche à repasser sur demande|Téléphone |Télévision par câble|Climatisation|Bouilloire électrique|Concierge 24h/24",
@@ -80,5 +99,46 @@ public class Main {
 
 			}
 		}
+<<<<<<< Updated upstream
+=======
+		
+		for (Chambre chambre2 : enregistrementChambre) {
+			System.out.println(chambre2.getNumero() + chambre2.getNom());}
+		
+	
+		
+		 
+	     if(entrer.length() == 10 && Entier.isInt(entrer)){
+	          client = true ;
+	          System.out.print("________________________PORTAIL CLIENT__________________________");
+	          
+	         
+	          
+	          
+	      }
+	     if(entrer.startsWith("GH") && entrer.length() == 6) {
+	         employes = true;
+	         System.out.print("________________________PORTAIL EMPLOYEE_______________________");
+	        
+	         String key ="";
+	         while (!key.equals("Q")) {
+	        	 
+	        	  System.out.println("Quels informations recherchez vous ? :");
+	      		  key = saisieUtilisateur.next();
+	      		  switch(key) {
+	      		    case "A": Inscription.ListAt() ; break;
+		      		case "B": break;
+		      		case "C": break;
+		      		case "D": break;
+		      		case "E": break;
+	      		
+	      		  }
+	          }
+	          
+	          
+
+	      }
+		
+>>>>>>> Stashed changes
 	}
 }
