@@ -99,7 +99,7 @@ public class Inscription {
 
 	public static void affichageMenu() {
 		System.out.println("_____________________MENU HOTEL CDA JAVA _____________________");
-		System.out.println("   A- Afficher l'état de lï¿½hï¿½tel");
+		System.out.println("   A- Afficher l'état de l'hotel");
 		System.out.println("   B- Afficher le nombre de chambres rï¿½servï¿½es");
 		System.out.println("   C- Afficher le nombre de chambre libre");
 		System.out.println("   D- Afficher le numero de la première chambre vide");
