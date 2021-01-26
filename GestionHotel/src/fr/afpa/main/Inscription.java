@@ -1,5 +1,7 @@
 package fr.afpa.main;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.Scanner;
 //bon fichier
@@ -12,6 +14,8 @@ public class Inscription {
 	static String[] clientId= new String[50]; 
 	static Client[] file = new Client[50]; 
 	private static Hotel hotel = new Hotel();
+	static Client cl = new Client();
+	static Chambre chambre = new Chambre();
 
 
 	public void setId(String id) {
@@ -50,23 +54,23 @@ public class Inscription {
 	}
 	
 	public static Client login(Hotel hotel) {
-		Client cl = new Client();
+		
 		boolean client = false;
 		boolean exist = false;
 		Scanner saisieUtilisateur = new Scanner(System.in);
-		System.out.print("Nouveau sur notre plateforme?  Y | N ");
+		System.out.print("Nouveau sur notre plateforme?  Y | N : ");
 		String demande = saisieUtilisateur.nextLine();
 		if (demande.equals("Y")) {
 			
 			cl = inscrire();
-			System.out.print("Entrez votre code d'identification :");
+			System.out.print("Entrez votre code d'identification : ");
 			demande = saisieUtilisateur.nextLine();
 			if(demande.equals(cl.getIdClient()) ) {
 	        	  
 	        	  Clientmenu();
 	        	  
 	          }
-	          else {System.out.print("Erreur d'authentification ,Réésasayer ou inscrvez vous:");
+	          else {System.out.print("Erreur d'authentification ,Réésasayer ou inscrvez vous: ");
 	          cl = inscrire();
 	                   
 	          }
@@ -74,7 +78,7 @@ public class Inscription {
 		
 		
 		if(demande.equals("N")) {
-			System.out.print("Entrer votre numero d'identification");
+			System.out.print("Entrer votre numero d'identification: ");
 			demande = saisieUtilisateur.nextLine();
 			 if(demande.startsWith("GH") && demande.length() == 6) {
 		         employes = true;
@@ -87,7 +91,7 @@ public class Inscription {
 		        	  Clientmenu();
 		        	  
 		          }
-		          else {System.out.print("Erreur d'authentification ,Réésasayer ou inscrvez vous:");
+		          else {System.out.print("Erreur d'authentification ,Réésasayer ou inscrvez vous: ");
 		          cl = inscrire();
 		          
 		          
@@ -117,7 +121,7 @@ public class Inscription {
     String key ="";
     while (!key.equals("Q")) {
    	 
-   	  System.out.println("Quels informations recherchez vous ? :");
+   	  System.out.println("Quels informations recherchez vous ? : ");
  		  key = saisieUtilisateur.next();
  		  switch(key) {
  		 case "A":
@@ -137,12 +141,41 @@ public class Inscription {
              break;
          case "F":
              hotel.reserverChambre(hotel);
+         
+             
+         case "H":
 
  		
  		  }
      }
+    if(key.equals("Q")) {
+    	Inscription.login(hotel);
+    }
      }
-	public static void Clientmenu() {System.out.print("GG menu:");}
+	public static void Clientmenu() {
+	
+		Scanner saisieUtilisateur = new Scanner(System.in);
+		System.out.println("__MENU HOTEL CDA JAVA __");
+		System.out.println(cl.getNom() + " " +cl.getPrenom() +" "  );
+		
+		
+		System.out.println("Vous avez " + cl.getNbReservation()+" réservation."  );
+		System.out.println("Voulez vous reserver une chambre: Y  |  N : Ou supprimer une reservation : S");
+		String key = saisieUtilisateur.next();
+		
+		if (key.equals("Y")) {
+			
+			Reservation.reserverCl(cl,chambre,hotel);
+		}
+		if (key.equals("S")) {
+			
+			Reservation.annuler(cl,chambre);
+		}
+		
+		else {Inscription.login(hotel);}
+
+		      
+	}
 
 	public static void ListAt() {
 		for (int i = 0; i < file.length; i++) {

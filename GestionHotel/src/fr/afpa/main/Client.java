@@ -5,6 +5,8 @@ public class Client {
 	private String prenom;
 	private String telephone;
 	private String idClient;
+	private int NbReservation ;
+	private Reservation reservation = new Reservation(null, null, null);
 	
 	public String getPrenom() {
 		return prenom;
@@ -23,6 +25,12 @@ public class Client {
 	}
 	public void setIdClient(String idClient) {
 		this.idClient = idClient;
+	}
+	public int getNbReservation() {
+		return NbReservation;
+	}
+	public void setNbReservation(int nbReservation) {
+		NbReservation = nbReservation;
 	}
 	
 }

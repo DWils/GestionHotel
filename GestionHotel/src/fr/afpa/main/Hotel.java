@@ -78,7 +78,7 @@ public class Hotel {
 			listeTypeChambre[i-1].setOptions(listeOptions);
 			for (int j = 0; j < Integer.parseInt(infosChambre[5]) ; j++) {
 				numeroChambre++;
-				System.out.println(numeroChambre);
+				
 				listeChambres[numeroChambre-1] = new Chambre();
 				listeChambres[numeroChambre-1] = listeTypeChambre[i-1];
 				listeChambres[numeroChambre-1].setNumero(numeroChambre);
@@ -201,7 +201,15 @@ public class Hotel {
 		}
 //		int key = 0;
 //		switch()
+	
 
 	}
-
+	public void modifier (Hotel hotel) {
+		int key = 0;
+		while (key != -1) {
+			afficheListeChambre(hotel);
+			System.out.println("Quelle chambre souhaitez-vous prendre ? (de 1 à 8 svp , pour annuler votre demande tapez -1)");
+			key = saisieUtilisateur.nextInt();
+	}
+	}
 }
