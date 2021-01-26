@@ -83,7 +83,7 @@ public class Reservation {
 			System.out.println("Annuler la premiere ?  "  );
 		}
 		if(i>0 && chambre.getListeReservation()[i] != null ) {
-			System.out.println(" ou la " +i+1+ "ème"  );
+			System.out.println(" ou la " +(i+1)+ "ème"  );
 		}
 		}
 		int fin = saisieUtilisateur.nextInt();

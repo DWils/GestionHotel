@@ -4,10 +4,11 @@ public class Client {
 	private String nom;
 	private String prenom;
 	private String telephone;
+
 	private String idClient;
 	private int NbReservation ;
 	private Reservation reservation = new Reservation(null, null, null);
-	
+
 	public String getPrenom() {
 		return prenom;
 	}
@@ -20,6 +21,7 @@ public class Client {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 	public String getIdClient() {
 		return idClient;
 	}
@@ -32,5 +34,9 @@ public class Client {
 	public void setNbReservation(int nbReservation) {
 		NbReservation = nbReservation;
 	}
-	
+
+
+
+
+
 }
