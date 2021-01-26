@@ -18,32 +18,9 @@ public class Main {
 				"Suite Royale;342  metres carres;Ocean;2 adultes et 2 enfants de moins de 12 ans;2400;4;Seche-cheveux|Coffre-fort dans la chambre|Minibar|TÃ©lÃ©phone |Acces Internet haut dÃ©bit sans fil|Lecteur DVD sur demande|Television par cable|Climatisation|Service aux chambres 24h/24|Concierge 24h/24" };
 
 		hotel.readDataChambre(dataChambres);
-	
+
 		Inscription.login(hotel);
 
-		String[] infosChambre = null;
-		String[] listeOptions = null;
-		Chambre chambre = new Chambre();
-		int numeroChambre = 0;
-		int nbChambre = 0;
-
-		boolean employes = false;
-		boolean client = false;
-		Inscription client1 = new Inscription();
-		boolean gotaccount = false;
-		boolean inscription = false;
-
-		/*
-		*/
-	      }
-		
-		
-	
-		
-	}
-		
-		
 	}
 
-
-
+}

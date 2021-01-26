@@ -14,12 +14,6 @@ public class Chambre {
 	private static int reservee;
 	private static int ocuppee;
 
-
-
-	private Reservation[] listeReservation;
-	private static int reservee;
-	private static int ocuppee;
-
 	private String etat;
 	public static Chambre[] hotel;
 
