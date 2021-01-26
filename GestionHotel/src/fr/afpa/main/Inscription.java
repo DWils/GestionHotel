@@ -1,14 +1,17 @@
 package fr.afpa.main;
 
+import java.util.Random;
 import java.util.Scanner;
 //bon fichier
 public class Inscription {
 	private String numero;
+	private static boolean employes = false;
 	private String prenom;
 	private String telephone;
 	private String listReservation;
 	static String[] clientId= new String[50]; 
 	static Client[] file = new Client[50]; 
+
 
 	public void setId(String id) {
 		
@@ -28,48 +31,106 @@ public class Inscription {
 	}
 	
 	public static Client inscrire() {
+		String str = "";
 		Scanner saisieUtilisateur = new Scanner(System.in);
 		Client user = new Client();
 		System.out.print("Inconnu.....Inscrivez vous, nom : ");
 		user.setNom(saisieUtilisateur.nextLine());
 		System.out.print("... prenom : ");
 		user.setPrenom(saisieUtilisateur.nextLine());
+		for (int i =0; i <10; i++) {
+		String code = Integer.toString((int) (Math.random()*9)+0);
+		str = str + code;
+		}
+		user.setIdClient(str);
+		System.out.println("Votre code est : "+str);
+		
 		return user;
 	}
 	
-	public static void login() {
+	public static Client login() {
 		Client cl = new Client();
+		boolean client = false;
 		boolean exist = false;
 		Scanner saisieUtilisateur = new Scanner(System.in);
 		System.out.print("Nouveau sur notre plateforme?  Y | N ");
 		String demande = saisieUtilisateur.nextLine();
 		if (demande.equals("Y")) {
-			System.out.print("Entrer votre nom la demande sera traité ulterieurement");
+			
+			cl = inscrire();
+			System.out.print("Entrez votre code d'identification :");
 			demande = saisieUtilisateur.nextLine();
-			for (int i = 0; i < file.length; i++) {
-				if (file[i] == null && exist == false) {
-					cl= inscrire();
-					file[i] = new Inscritpion.inscrire();
-					exist = true;
-					System.out.println(file[i]);
-				}
+			if(demande.equals(cl.getIdClient()) ) {
+	        	  
+	        	  Clientmenu();
+	        	  
+	          }
+	          else {System.out.print("Erreur d'authentification ,Réésasayer ou inscrvez vous:");
+	          cl = inscrire();
+	          
+	          
+	          }
 					}
+		
+		
 		if(demande.equals("N")) {
 			System.out.print("Entrer votre numero d'identification");
 			demande = saisieUtilisateur.nextLine();
-			for (int i = 0; i < clientId.length; i++) {
-				if(demande == clientId[i]) {
-					
-				}
-				if (i == clientId.length-1 && exist == false) {
-					System.out.print("Numero inconnu réessayez");
-					login();
+			 if(demande.startsWith("GH") && demande.length() == 6) {
+		         employes = true;
+		         Employemenu();
+		        }
+		        
+			if(demande.length() == 10 && Entier.isInt(demande)){
+		          if(demande.equals(cl.getIdClient()) ) {
+		        	  System.out.print("GG go fap:");
+		        	  Clientmenu();
+		        	  
+		          }
+		          else {System.out.print("Erreur d'authentification ,Réésasayer ou inscrvez vous:");
+		          cl = inscrire();
+		          
+		          
+		          }
+			
 				}
 			}
-		} 
+		return cl;
+		}
 		
-	}
-}
+		
+	
+	public static void Employemenu() {System.out.println("__MENU HOTEL CDA JAVA __");
+	Scanner saisieUtilisateur = new Scanner(System.in);
+    System.out.println("   A- A-Afficher l’état de l’hôtel");
+    System.out.println("   B-Afficher le nombre de chambres réservées");
+    System.out.println("   C- Afficher le nombre de chambre libre");
+    System.out.println("   D-Afficher le numéro de la première chambre vide");
+    System.out.println("   E-Afficher le numéro de la dernière chambre vide");
+    System.out.println("   F-Réserver une chambre ");
+    System.out.println("   G-Libérer une chambre");
+    System.out.println("   H-Modifier une réservation");
+    System.out.println("   I-Annuler une réservation");
+    System.out.println("   J-Afficher le CA à une date donnée");
+
+    System.out.println("__");
+    String key ="";
+    while (!key.equals("Q")) {
+   	 
+   	  System.out.println("Quels informations recherchez vous ? :");
+ 		  key = saisieUtilisateur.next();
+ 		  switch(key) {
+ 		    case "A": Inscription.ListAt() ; break;
+     		case "B": break;
+     		case "C": break;
+     		case "D": break;
+     		case "E": break;
+ 		
+ 		  }
+     }
+     }
+	public static void Clientmenu() {System.out.print("GG menu:");}
+
 	public static void ListAt() {
 		for (int i = 0; i < file.length; i++) {
 			if (file[i] != null) {
