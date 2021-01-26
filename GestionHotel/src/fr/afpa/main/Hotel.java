@@ -1,10 +1,19 @@
 
 package fr.afpa.main;
 
+import java.util.Scanner;
+
 public class Hotel {
 
 	private Chambre[] listeChambres;
+	private Chambre[] listeTypeChambre;
 	private float chiffreAffaire;
+	Scanner saisieUtilisateur = new Scanner(System.in);
+	String[] infosChambre = null;
+	String[] listeOptions = null;
+	Chambre chambre = new Chambre();
+	int numeroChambre = 0;
+	int nbChambre = 0;
 
 	public Hotel(Chambre[] ch, float ca) {
 		listeChambres = ch;
@@ -24,6 +33,14 @@ public class Hotel {
 	public Chambre[] getListeChambres() {
 		return listeChambres;
 	}
+	
+	public void setListeTypeChambre(Chambre[] ltc) {
+		listeTypeChambre =  ltc;
+	}
+	
+	public Chambre[] getListeTypeChambre() {
+		return listeTypeChambre;
+	}
 
 	public void setListeChambres(Chambre[] chambres) {
 		listeChambres = chambres;
@@ -36,6 +53,39 @@ public class Hotel {
 	public void setChiffreAffaire(float ca) {
 		chiffreAffaire = ca;
 	}
+	
+	public void readDataChambre(String[] data) {
+		for (int i2 = 1; i2 < data.length; i2++) {
+
+			infosChambre = data[i2].split(";");
+
+			nbChambre = nbChambre + Integer.parseInt(infosChambre[5]);
+			
+		}
+		//System.out.println(nbChambre); //Check up nombre total de chambre
+		listeTypeChambre = new Chambre[data.length -1];
+		listeChambres = new Chambre[nbChambre];
+		chambre = new Chambre();
+		for (int i = 1; i < data.length; i++) {
+			infosChambre = data[i].split(";");
+			listeTypeChambre[i-1] = new Chambre();
+			listeTypeChambre[i-1].setNom(infosChambre[0]);
+			listeTypeChambre[i-1].setSuperficie(infosChambre[1]);
+			listeTypeChambre[i-1].setVue(infosChambre[2]);
+			listeTypeChambre[i-1].setOccupation(infosChambre[3]);
+			listeTypeChambre[i-1].setTarif(Float.parseFloat(infosChambre[4]));
+			listeOptions = infosChambre[6].split("\\|");
+			listeTypeChambre[i-1].setOptions(listeOptions);
+			for (int j = 0; j < Integer.parseInt(infosChambre[5]) ; j++) {
+				numeroChambre++;
+				listeChambres[numeroChambre-1] = new Chambre();
+				listeChambres[numeroChambre-1].setNumero(numeroChambre);
+				listeChambres[numeroChambre-1] = listeTypeChambre[i-1];
+			}
+		}
+	}
+	
+	
 
 	public void afficheListeChambre(Hotel hotel) {
 		Chambre chambre = new Chambre();
@@ -55,6 +105,10 @@ public class Hotel {
 		}
 
 	}
+	
+	//public Chambre[] choisirTypeChambre(Hotel hotel , int ) {
+		
+	//}
 
 	public void afficheOptions(String[] options) {
 		for (int i = 0; i < options.length; i++) {
@@ -135,15 +189,17 @@ public class Hotel {
 		Inscription inscription = new Inscription();
 		client = inscription.inscrire();
 		int key = 0;
-		while(key != -1) {
+		while (key != -1) {
 			afficheListeChambre(hotel);
-			System.out.println("Quelle chambre souhaitez-vous prendre ? (en valeur numerique svp)");
+			System.out.println("Quelle chambre souhaitez-vous prendre ? (de 1 à 8 svp , pour annuler votre demande tapez -1)");
+			key = saisieUtilisateur.nextInt();
+			if (key >= 1 && key <= 8) {
+				
+			}
 		}
 //		int key = 0;
 //		switch()
-		
-		
-		
+
 	}
 
 }

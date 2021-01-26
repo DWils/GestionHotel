@@ -3,6 +3,7 @@ package fr.afpa.main;
 
 public class Chambre {
 	private int numero;
+	//private int indiceType;
 	private String nom;
 	private String superficie;
 	private String vue;
