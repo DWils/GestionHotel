@@ -4,6 +4,10 @@ public class Client {
 	private String nom;
 	private String prenom;
 	private String telephone;
+
+	private String idClient;
+
+
 	
 	public String getPrenom() {
 		return prenom;
@@ -17,6 +21,16 @@ public class Client {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+	public String getIdClient() {
+		return idClient;
+	}
+	public void setIdClient(String idClient) {
+		this.idClient = idClient;
+	}
 	
+
+
+
 
 }
