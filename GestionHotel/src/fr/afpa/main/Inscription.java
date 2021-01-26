@@ -11,6 +11,7 @@ public class Inscription {
 	private String listReservation;
 	static String[] clientId= new String[50]; 
 	static Client[] file = new Client[50]; 
+	private static Hotel hotel = new Hotel();
 
 
 	public void setId(String id) {
@@ -48,7 +49,7 @@ public class Inscription {
 		return user;
 	}
 	
-	public static Client login() {
+	public static Client login(Hotel hotel) {
 		Client cl = new Client();
 		boolean client = false;
 		boolean exist = false;
@@ -67,8 +68,7 @@ public class Inscription {
 	          }
 	          else {System.out.print("Erreur d'authentification ,Réésasayer ou inscrvez vous:");
 	          cl = inscrire();
-	          
-	          
+	                   
 	          }
 					}
 		
@@ -78,12 +78,12 @@ public class Inscription {
 			demande = saisieUtilisateur.nextLine();
 			 if(demande.startsWith("GH") && demande.length() == 6) {
 		         employes = true;
-		         Employemenu();
+		         Employemenu(hotel);
 		        }
 		        
 			if(demande.length() == 10 && Entier.isInt(demande)){
 		          if(demande.equals(cl.getIdClient()) ) {
-		        	  System.out.print("GG go fap:");
+		        	 
 		        	  Clientmenu();
 		        	  
 		          }
@@ -100,7 +100,7 @@ public class Inscription {
 		
 		
 	
-	public static void Employemenu() {System.out.println("__MENU HOTEL CDA JAVA __");
+	public static void Employemenu(Hotel hotel) {System.out.println("__MENU HOTEL CDA JAVA __");
 	Scanner saisieUtilisateur = new Scanner(System.in);
     System.out.println("   A- A-Afficher l’état de l’hôtel");
     System.out.println("   B-Afficher le nombre de chambres réservées");
@@ -120,11 +120,24 @@ public class Inscription {
    	  System.out.println("Quels informations recherchez vous ? :");
  		  key = saisieUtilisateur.next();
  		  switch(key) {
- 		    case "A": Inscription.ListAt() ; break;
-     		case "B": break;
-     		case "C": break;
-     		case "D": break;
-     		case "E": break;
+ 		 case "A":
+             hotel.afficheEtatHotel(hotel);
+             break;
+         case "B": 
+             hotel.afficherNbResa();
+             break;
+         case "C": 
+             hotel.afficherNbLibre();
+             break;
+         case "D": 
+             hotel.afficherPremiereChambre(hotel);
+             break;
+         case "E": 
+             hotel.afficherDerniereChambre(hotel);
+             break;
+         case "F":
+             hotel.reserverChambre(hotel);
+
  		
  		  }
      }
