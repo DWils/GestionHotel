@@ -1,8 +1,10 @@
 package fr.afpa.main;
 
 import java.util.Random;
+
 import java.util.Scanner;
-//bon fichier
+
+
 public class Inscription {
 	private String numero;
 	private static boolean employes = false;
@@ -32,6 +34,7 @@ public class Inscription {
 	}
 	
 	public static Client inscrire() {
+
 		String str = "";
 		Scanner saisieUtilisateur = new Scanner(System.in);
 		Client user = new Client();
@@ -66,7 +69,7 @@ public class Inscription {
 	        	  Clientmenu();
 	        	  
 	          }
-	          else {System.out.print("Erreur d'authentification ,Réésasayer ou inscrvez vous:");
+	          else {System.out.print("Erreur d'authentification ,Rï¿½ï¿½sasayer ou inscrvez vous:");
 	          cl = inscrire();
 	                   
 	          }
@@ -87,7 +90,7 @@ public class Inscription {
 		        	  Clientmenu();
 		        	  
 		          }
-		          else {System.out.print("Erreur d'authentification ,Réésasayer ou inscrvez vous:");
+		          else {System.out.print("Erreur d'authentification ,Rï¿½ï¿½sasayer ou inscrvez vous:");
 		          cl = inscrire();
 		          
 		          
@@ -102,16 +105,16 @@ public class Inscription {
 	
 	public static void Employemenu(Hotel hotel) {System.out.println("__MENU HOTEL CDA JAVA __");
 	Scanner saisieUtilisateur = new Scanner(System.in);
-    System.out.println("   A- A-Afficher l’état de l’hôtel");
-    System.out.println("   B-Afficher le nombre de chambres réservées");
+    System.out.println("   A- A-Afficher lï¿½ï¿½tat de lï¿½hï¿½tel");
+    System.out.println("   B-Afficher le nombre de chambres rï¿½servï¿½es");
     System.out.println("   C- Afficher le nombre de chambre libre");
-    System.out.println("   D-Afficher le numéro de la première chambre vide");
-    System.out.println("   E-Afficher le numéro de la dernière chambre vide");
-    System.out.println("   F-Réserver une chambre ");
-    System.out.println("   G-Libérer une chambre");
-    System.out.println("   H-Modifier une réservation");
-    System.out.println("   I-Annuler une réservation");
-    System.out.println("   J-Afficher le CA à une date donnée");
+    System.out.println("   D-Afficher le numï¿½ro de la premiï¿½re chambre vide");
+    System.out.println("   E-Afficher le numï¿½ro de la derniï¿½re chambre vide");
+    System.out.println("   F-Rï¿½server une chambre ");
+    System.out.println("   G-Libï¿½rer une chambre");
+    System.out.println("   H-Modifier une rï¿½servation");
+    System.out.println("   I-Annuler une rï¿½servation");
+    System.out.println("   J-Afficher le CA ï¿½ une date donnï¿½e");
 
     System.out.println("__");
     String key ="";
@@ -147,8 +150,19 @@ public class Inscription {
 	public static void ListAt() {
 		for (int i = 0; i < file.length; i++) {
 			if (file[i] != null) {
-			System.out.println("client n°"+ i + " --->"+file[i]);
+			System.out.println("client nï¿½"+ i + " --->"+file[i]);
 		}
 			}
 	}
 }
+
+		Scanner saisieUtilisateur = new Scanner(System.in);
+		Client user = new Client();
+		System.out.print("Inscrivez vous, nom : ");
+		user.setNom(saisieUtilisateur.nextLine());
+		System.out.print("Inscrivez vous, prenom : ");
+		user.setPrenom(saisieUtilisateur.nextLine());
+		return user;
+	}
+}
+

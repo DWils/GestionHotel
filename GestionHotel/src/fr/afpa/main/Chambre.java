@@ -9,12 +9,20 @@ public class Chambre {
 	private float tarif;
 	private String[] options;
 	private String occupation;
+
 	private Reservation[] listeReservation;
 	private static int reservee;
 	private static int ocuppee;
 
-	
-	
+
+
+	private Reservation[] listeReservation;
+	private static int reservee;
+	private static int ocuppee;
+
+	private String etat;
+	public static Chambre[] hotel;
+
 	public Chambre(int num , String n ,String sup, String v ,float t , String[] opts, Reservation[] listeR ) {
 		numero = num;
 		nom = n;
