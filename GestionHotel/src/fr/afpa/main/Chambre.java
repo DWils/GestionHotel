@@ -3,17 +3,16 @@ package fr.afpa.main;
 
 public class Chambre {
 	private int numero;
+	//private int indiceType;
 	private String nom;
 	private String superficie;
 	private String vue;
 	private float tarif;
 	private String[] options;
 	private String occupation;
-
 	private Reservation[] listeReservation;
 	private static int reservee;
 	private static int ocuppee;
-
 	private String etat;
 	public static Chambre[] hotel;
 

@@ -4,35 +4,33 @@ import java.util.Random;
 
 import java.util.Scanner;
 
-
 public class Inscription {
 	private String numero;
 	private static boolean employes = false;
 	private String prenom;
 	private String telephone;
 	private String listReservation;
-	static String[] clientId= new String[50]; 
-	static Client[] file = new Client[50]; 
+	static String[] clientId = new String[50];
+	static Client[] file = new Client[50];
 	private static Hotel hotel = new Hotel();
 
-
 	public void setId(String id) {
-		
+
 		numero = id;
 	}
+
 	public String getId() {
 		return numero;
 	}
 
 	public void connexion() {
-		
+
 	}
-	
 
 	public String[] getClientId() {
 		return clientId;
 	}
-	
+
 	public static Client inscrire() {
 
 		String str = "";
@@ -42,16 +40,16 @@ public class Inscription {
 		user.setNom(saisieUtilisateur.nextLine());
 		System.out.print("... prenom : ");
 		user.setPrenom(saisieUtilisateur.nextLine());
-		for (int i =0; i <10; i++) {
-		String code = Integer.toString((int) (Math.random()*9)+0);
-		str = str + code;
+		for (int i = 0; i < 10; i++) {
+			String code = Integer.toString((int) (Math.random() * 9) + 0);
+			str = str + code;
 		}
 		user.setIdClient(str);
-		System.out.println("Votre code est : "+str);
-		
+		System.out.println("Votre code est : " + str);
+
 		return user;
 	}
-	
+
 	public static Client login(Hotel hotel) {
 		Client cl = new Client();
 		boolean client = false;
@@ -60,101 +58,102 @@ public class Inscription {
 		System.out.print("Nouveau sur notre plateforme?  Y | N ");
 		String demande = saisieUtilisateur.nextLine();
 		if (demande.equals("Y")) {
-			
+
 			cl = inscrire();
 			System.out.print("Entrez votre code d'identification :");
 			demande = saisieUtilisateur.nextLine();
-			if(demande.equals(cl.getIdClient()) ) {
-	        	  
-	        	  Clientmenu();
-	        	  
-	          }
-	          else {System.out.print("Erreur d'authentification ,Rï¿½ï¿½sasayer ou inscrvez vous:");
-	          cl = inscrire();
-	                   
-	          }
-					}
-		
-		
-		if(demande.equals("N")) {
+			if (demande.equals(cl.getIdClient())) {
+
+				Clientmenu();
+
+			} else {
+				System.out.print("Erreur d'authentification ,Rï¿½ï¿½sasayer ou inscrvez vous:");
+				cl = inscrire();
+
+			}
+		}
+
+		if (demande.equals("N")) {
 			System.out.print("Entrer votre numero d'identification");
 			demande = saisieUtilisateur.nextLine();
-			 if(demande.startsWith("GH") && demande.length() == 6) {
-		         employes = true;
-		         Employemenu(hotel);
-		        }
-		        
-			if(demande.length() == 10 && Entier.isInt(demande)){
-		          if(demande.equals(cl.getIdClient()) ) {
-		        	 
-		        	  Clientmenu();
-		        	  
-		          }
-		          else {System.out.print("Erreur d'authentification ,Rï¿½ï¿½sasayer ou inscrvez vous:");
-		          cl = inscrire();
-		          
-		          
-		          }
-			
-				}
+			if (demande.startsWith("GH") && demande.length() == 6) {
+				employes = true;
+				employeMenu(hotel);
 			}
-		return cl;
+
+			if (demande.length() == 10 && Entier.isInt(demande)) {
+				if (demande.equals(cl.getIdClient())) {
+
+					Clientmenu();
+
+				} else {
+					System.out.print("Erreur d'authentification ,Rï¿½ï¿½sasayer ou inscrvez vous:");
+					cl = inscrire();
+
+				}
+
+			}
 		}
-		
-		
-	
-	public static void Employemenu(Hotel hotel) {System.out.println("__MENU HOTEL CDA JAVA __");
-	Scanner saisieUtilisateur = new Scanner(System.in);
-    System.out.println("   A- A-Afficher lï¿½ï¿½tat de lï¿½hï¿½tel");
-    System.out.println("   B-Afficher le nombre de chambres rï¿½servï¿½es");
-    System.out.println("   C- Afficher le nombre de chambre libre");
-    System.out.println("   D-Afficher le numï¿½ro de la premiï¿½re chambre vide");
-    System.out.println("   E-Afficher le numï¿½ro de la derniï¿½re chambre vide");
-    System.out.println("   F-Rï¿½server une chambre ");
-    System.out.println("   G-Libï¿½rer une chambre");
-    System.out.println("   H-Modifier une rï¿½servation");
-    System.out.println("   I-Annuler une rï¿½servation");
-    System.out.println("   J-Afficher le CA ï¿½ une date donnï¿½e");
+		return cl;
+	}
 
-    System.out.println("__");
-    String key ="";
-    while (!key.equals("Q")) {
-   	 
-   	  System.out.println("Quels informations recherchez vous ? :");
- 		  key = saisieUtilisateur.next();
- 		  switch(key) {
- 		 case "A":
-             hotel.afficheEtatHotel(hotel);
-             break;
-         case "B": 
-             hotel.afficherNbResa();
-             break;
-         case "C": 
-             hotel.afficherNbLibre();
-             break;
-         case "D": 
-             hotel.afficherPremiereChambre(hotel);
-             break;
-         case "E": 
-             hotel.afficherDerniereChambre(hotel);
-             break;
-         case "F":
-             hotel.reserverChambre(hotel);
+	public static void affichageMenu() {
+		System.out.println("_____________________MENU HOTEL CDA JAVA _____________________");
+		System.out.println("   A- Afficher l'état de lï¿½hï¿½tel");
+		System.out.println("   B- Afficher le nombre de chambres rï¿½servï¿½es");
+		System.out.println("   C- Afficher le nombre de chambre libre");
+		System.out.println("   D- Afficher le numero de la première chambre vide");
+		System.out.println("   E- Afficher le numero de la dernière chambre vide");
+		System.out.println("   F- Reserver une chambre ");
+		System.out.println("   G- Liberer une chambre");
+		System.out.println("   H- Modifier une reservation");
+		System.out.println("   I- Annuler une reservation");
+		System.out.println("   J- Afficher le CA à une date donnée");
+		System.out.println("_______________________________________________________________");
+	}
 
- 		
- 		  }
-     }
-     }
-	public static void Clientmenu() {System.out.print("GG menu:");}
+	public static void employeMenu(Hotel hotel) {
+		Scanner saisieUtilisateur = new Scanner(System.in);
+
+		
+		String key = "";
+		while (!key.equals("Q")) {
+			affichageMenu();
+			System.out.println("Quels informations recherchez vous ? :");
+			key = saisieUtilisateur.next();
+			switch (key) {
+			case "A":
+				hotel.afficheEtatHotel(hotel);
+				break;
+			case "B":
+				hotel.afficherNbResa();
+				break;
+			case "C":
+				hotel.afficherNbLibre();
+				break;
+			case "D":
+				hotel.afficherPremiereChambre(hotel);
+				break;
+			case "E":
+				hotel.afficherDerniereChambre(hotel);
+				break;
+			case "F":
+				hotel.reserverChambre(hotel);
+
+			}
+		}
+	}
+
+	public static void Clientmenu() {
+		System.out.print("GG menu:");
+	}
 
 	public static void ListAt() {
 		for (int i = 0; i < file.length; i++) {
 			if (file[i] != null) {
-			System.out.println("client nï¿½"+ i + " --->"+file[i]);
-		}
+				System.out.println("client nï¿½" + i + " --->" + file[i]);
 			}
+		}
 	}
 
 }
-
-
