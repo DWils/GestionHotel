@@ -42,11 +42,11 @@ public class Main {
 
 			}
 		}
-		if(inscription == true) 
-		{
-			Inscription.inscrire();
-			
-		}
+//		if(inscription == true) 
+//		{
+//			Inscription.inscrire();
+//			
+//		}
 
 		String[] dataChambres = { "Type chambre;Taille;Vues;Occupation;tarif;Nombre;Options",
 				"Chambre Vue Piscine;44 metres carres;Piscine Centrale;2 adultes et 2 enfants de moins de 12 ans;300;7;Fer et planche a  repasser sur demande|Telephone |Television par cÃ¢ble|Climatisation|Bouilloire Ã©lectrique|Concierge 24h/24",
@@ -87,6 +87,7 @@ public class Main {
 			}
 		}
 		
+		
 
 		
 		if(entrer.length() == 10 && Entier.isInt(entrer)){
@@ -102,7 +103,8 @@ public class Main {
 	        
 	         String key ="";
 	         while (!key.equals("Q")) {
-	        	 
+	        	 System.out.println("\n");
+	        	 menuEmploye();	
 	        	  System.out.println("Quels informations recherchez vous ? :");
 	      		  key = saisieUtilisateur.next();
 	      		  switch(key) {
@@ -118,7 +120,11 @@ public class Main {
 		      		case "D": 
 		      			hotel.afficherPremiereChambre(hotel);
 		      			break;
-		      		case "E": break;
+		      		case "E": 
+		      			hotel.afficherDerniereChambre(hotel);
+		      			break;
+		      		case "F":
+		      			hotel.reserverChambre(hotel);
 	      		
 	      		  }
 	          }
@@ -127,6 +133,22 @@ public class Main {
 
 	      }
 		
+	}
+	
+	public static void menuEmploye(){
+		System.out.println("___________MENU HOTEL CDA JAVA _________________");
+		System.out.println("   A-Afficher l’état de l’hôtel");
+		System.out.println("   B-Afficher le nombre de chambres réservées");
+		System.out.println("   C- Afficher le nombre de chambre libre");
+		System.out.println("   D-Afficher le numéro de la première chambre vide");
+		System.out.println("   E-Afficher le numéro de la dernière chambre vide");
+		System.out.println("   F-Réserver une chambre ");
+		System.out.println("   G-Libérer une chambre");
+		System.out.println("   H-Modifier une réservation");
+		System.out.println("   I-Annuler une réservation");
+		System.out.println("   J-Afficher le CA à une date donnée");
+
+		System.out.println("________________________________________________");
 	}
 		
 		
