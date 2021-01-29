@@ -6,18 +6,18 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
+import fr.afpa.beans.CategorieChambre;
 import fr.afpa.beans.Chambre;
 import fr.afpa.beans.Client;
 import fr.afpa.beans.Reservation;
 
 public class GestionChambre {
 
-	private static int 
 	private Chambre[] listeChambres;
-	private Chambre[] listeTypeChambre;
+	private CategorieChambre[] listeCategorieChambre;
 	private float chiffreAffaire;
 	Scanner saisieUtilisateur = new Scanner(System.in);
-	String[] infosChambre = null;
+	String[] dataSplit = null;
 	String[] listeOptions = null;
 	Chambre chambre = new Chambre();
 	int numeroChambre = 1;
@@ -59,39 +59,25 @@ public class GestionChambre {
 	}
 
 	public void readDataChambre(String[] data) {
-		for (int i = 1; i < data.length; i++) {
-
-			infosChambre = data[i].split(";");
-
-			nbChambre = nbChambre + Integer.parseInt(infosChambre[5]);
-
-		}
+//		for (int i = 1; i < data.length; i++) {
+//
+//			dataSplit = data[i].split(";");
+//
+//			nbChambre = nbChambre + Integer.parseInt(dataSplit[5]);
+//
+//		}
 		// System.out.println(nbChambre); //Check up nombre total de chambre
-		listeTypeChambre = new Chambre[data.length - 1];
-		listeChambres = new Chambre[nbChambre];
+		listeCategorieChambre = new CategorieChambre[data.length - 1];
+		
 		chambre = new Chambre();
 		for (int i = 1; i < data.length; i++) {
-			infosChambre = data[i].split(";");
-			listeTypeChambre[i - 1] = new Chambre();
-			listeTypeChambre[i - 1].setNbChambre(Integer.parseInt(infosChambre[5]));
-			listeTypeChambre[i - 1].setNom(infosChambre[0]);
-			listeTypeChambre[i - 1].setSuperficie(infosChambre[1]);
-			listeTypeChambre[i - 1].setVue(infosChambre[2]);
-			listeTypeChambre[i - 1].setOccupation(infosChambre[3]);
-			listeTypeChambre[i - 1].setTarif(Float.parseFloat(infosChambre[4]));
-			listeOptions = infosChambre[6].split("\\|");
-			listeTypeChambre[i - 1].setOptions(listeOptions);
-			for (int j = 0; j < Integer.parseInt(infosChambre[5]); j++) {
-				listeChambres[numeroChambre - 1] = new Chambre();
-				listeChambres[numeroChambre - 1].setNom(listeTypeChambre[i - 1].getNom());
-				listeChambres[numeroChambre - 1].setSuperficie(listeTypeChambre[i - 1].getSuperficie());
-				listeChambres[numeroChambre - 1].setVue(listeTypeChambre[i - 1].getVue());
-				listeChambres[numeroChambre - 1].setOccupation(listeTypeChambre[i - 1].getOccupation());
-				listeChambres[numeroChambre - 1].setTarif((float) listeTypeChambre[i - 1].getTarif());
-				listeChambres[numeroChambre - 1].setOptions(listeTypeChambre[i - 1].getOptions());
-				int num = i * 100 + j;
-				listeChambres[numeroChambre - 1].setNumero(num);
-				numeroChambre++;
+			dataSplit = data[i].split(";");
+			listeOptions = dataSplit[6].split("\\|");
+			listeChambres = new Chambre[Integer.parseInt(dataSplit[5])];
+			listeCategorieChambre[i - 1] = new CategorieChambre(dataSplit[0], dataSplit[1], dataSplit[2], Float.parseFloat(dataSplit[4]) , listeOptions, dataSplit[3], listeChambres);
+			
+			for (int j = 0; j < Integer.parseInt(dataSplit[5]); j++) {
+				listeChambres[j - 1] = new Chambre();
 			}
 		}
 	}
@@ -121,11 +107,11 @@ public class GestionChambre {
 
 	public Chambre[] getListeTypeChambre() {
 
-		return listeTypeChambre;
+		return listeCategorieChambre;
 	}
 
-	public void setListeTypeChambre(Chambre[] ltc) {
-		listeTypeChambre = ltc;
+	public void setListeTypeChambre(CategorieChambre[] ltc) {
+		listeCategorieChambre = ltc;
 	}
 
 	public void afficheOptions(String[] options) {
@@ -135,27 +121,29 @@ public class GestionChambre {
 		}
 	}
 
-	public void afficheEtatHotel(GestionChambre hotel) {
-		for (int i = 0; i < hotel.getListeChambres().length; i++) {
-			System.out.println("----------------------------------------------");
-			System.out.println("Chambre n° " + hotel.getListeChambres()[i].getNumero() + " "
-					+ hotel.getListeChambres()[i].getNom() + " " + hotel.getListeChambres()[i].getTarif() + " euros"
-					+ "\n " + hotel.getListeChambres()[i].getOccupation() + "\n " + "Superficie : "
-					+ hotel.getListeChambres()[i].getSuperficie() + "\n " + "Vue : "
-					+ hotel.getListeChambres()[i].getVue() + "\n " + "Liste options :");
-			afficheOptions(listeChambres[i].getOptions());
-			if (hotel.getListeChambres()[i].getListeReservation()[0] != null) {
-				for (int j = 0; j < hotel.getListeChambres()[i].getListeReservation().length; j++) {
-					System.out.println("----------------------------------------------");
-					System.out.println(hotel.getListeChambres()[i].getListeReservation()[i].getClient().getNom() + " "
-							+ hotel.getListeChambres()[i].getListeReservation()[j].getDateDebut() + " - "
-							+ hotel.getListeChambres()[i].getListeReservation()[j].getDateFin());
-				}
-			} else {
-				System.out.println("----------------------------------------------");
-				System.out.println("Pas de réservation en cours");
-			}
-			System.out.println("----------------------------------------------");
+	public void afficheEtatHotel() {
+	
+		for (int i = 0; i < listeCategorieChambre.length; i++) {
+			listeCatgorieChambre[i].afficheCategorieChambre();
+//			System.out.println("----------------------------------------------");
+//			System.out.println("Chambre n° " + hotel.getListeChambres()[i].getNumero() + " "
+//					+ hotel.getListeChambres()[i].getNom() + " " + hotel.getListeChambres()[i].getTarif() + " euros"
+//					+ "\n " + hotel.getListeChambres()[i].getOccupation() + "\n " + "Superficie : "
+//					+ hotel.getListeChambres()[i].getSuperficie() + "\n " + "Vue : "
+//					+ hotel.getListeChambres()[i].getVue() + "\n " + "Liste options :");
+//			afficheOptions(listeChambres[i].getOptions());
+//			if (hotel.getListeChambres()[i].getListeReservation()[0] != null) {
+//				for (int j = 0; j < hotel.getListeChambres()[i].getListeReservation().length; j++) {
+//					System.out.println("----------------------------------------------");
+//					System.out.println(hotel.getListeChambres()[i].getListeReservation()[i].getClient().getNom() + " "
+//							+ hotel.getListeChambres()[i].getListeReservation()[j].getDateDebut() + " - "
+//							+ hotel.getListeChambres()[i].getListeReservation()[j].getDateFin());
+//				}
+//			} else {
+//				System.out.println("----------------------------------------------");
+//				System.out.println("Pas de réservation en cours");
+//			}
+//			System.out.println("----------------------------------------------");
 		}
 	}
 
@@ -247,7 +235,7 @@ public class GestionChambre {
 			System.out.println("Quelle chambre souhaitez-vous prendre ? (pour annuler votre demande tapez -1)");
 			key = saisieUtilisateur.nextInt();
 			if (key >= 1 && key <= 8) {
-				Chambre typeChoisi = hotel.listeTypeChambre[key - 1];
+				Chambre typeChoisi = hotel.listeCategorieChambre[key - 1];
 				for (int i = 0; i < hotel.getListeChambres().length; i++) {
 					{
 						if (typeChoisi.getNom().equals(hotel.getListeChambres()[i].getNom())
