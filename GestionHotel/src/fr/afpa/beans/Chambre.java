@@ -8,7 +8,7 @@ public class Chambre {
 	private Reservation[] listeReservation;
 	private String etat;
 
-	public Chambre(int num , Reservation[] listeR, String unEtat ) {
+	public Chambre(Reservation[] listeR, String unEtat ) {
 		numero = nbChambre;
 		listeReservation = listeR;
 		etat = unEtat;	
@@ -54,10 +54,12 @@ public class Chambre {
 	}
 	
 	public void afficherChambre() {
-		System.out.println(numero);
+		System.out.println(" Chambre n° " + numero );
 		for (int i = 0; i < listeReservation.length; i++) {
 			if(listeReservation[i] != null ) {
 				listeReservation[i].afficherReservation();
+			}else {
+				System.out.println("[espace vide]");
 			}
 		}
 	}

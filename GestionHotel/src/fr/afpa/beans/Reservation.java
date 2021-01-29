@@ -7,12 +7,15 @@ public class Reservation {
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
 	private Client client;
+	private float facture;
 	
-	public Reservation(LocalDate deb , LocalDate fin, Client cl){
+	public Reservation(LocalDate deb , LocalDate fin, Client cl, float uneFacture){
 	
 		dateDebut = deb;
 		dateFin = fin;
 		client = cl;
+		facture = uneFacture;
+		
 	}
 	
 	public LocalDate getDateDebut(){
@@ -41,7 +44,16 @@ public class Reservation {
 	}
 	
 	public void afficherReservation() {
+		
 		System.out.println(client.getIdClient() + " " + client.getNom() + " du " 
-				+ dateDebut + " au " + dateFin);
+				+ dateDebut + " au " + dateFin + " pour un montant de " + facture);
+	}
+
+	public float getFacture() {
+		return facture;
+	}
+
+	public void setFacture(float facture) {
+		this.facture = facture;
 	}
 }
