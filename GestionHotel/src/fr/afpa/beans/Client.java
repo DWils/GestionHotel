@@ -1,4 +1,4 @@
-package fr.afpa.main;
+package fr.afpa.beans;
 
 public class Client {
 	private String nom;

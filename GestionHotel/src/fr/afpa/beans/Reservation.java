@@ -1,4 +1,4 @@
-package fr.afpa.main;
+package fr.afpa.beans;
 
 import java.time.LocalDate;
 
@@ -38,5 +38,10 @@ public class Reservation {
 
 	public void setClient(Client cl) {
 		client = cl;
+	}
+	
+	public void afficherReservation() {
+		System.out.println(client.getIdClient() + " " + client.getNom() + " du " 
+				+ dateDebut + " au " + dateFin);
 	}
 }

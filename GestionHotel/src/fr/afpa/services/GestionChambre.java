@@ -1,13 +1,18 @@
 
-package fr.afpa.main;
+package fr.afpa.services;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
-public class Hotel {
+import fr.afpa.beans.Chambre;
+import fr.afpa.beans.Client;
+import fr.afpa.beans.Reservation;
 
+public class GestionChambre {
+
+	private static int 
 	private Chambre[] listeChambres;
 	private Chambre[] listeTypeChambre;
 	private float chiffreAffaire;
@@ -21,17 +26,17 @@ public class Hotel {
 
 	int nbChambre = 0;
 
-	public Hotel(Chambre[] ch, float ca) {
+	public GestionChambre(Chambre[] ch, float ca) {
 		listeChambres = ch;
 		chiffreAffaire = ca;
 	}
 
-	public Hotel(Chambre[] ch) {
+	public GestionChambre(Chambre[] ch) {
 		listeChambres = ch;
 		chiffreAffaire = (float) 0;
 	}
 
-	public Hotel() {
+	public GestionChambre() {
 		listeChambres = new Chambre[65];
 		chiffreAffaire = (float) 0;
 	}
@@ -91,7 +96,7 @@ public class Hotel {
 		}
 	}
 
-	public void afficheListeTypeChambre(Hotel hotel) {
+	public void afficheListeTypeChambre(GestionChambre hotel) {
 		String roomName = "";
 		int i = 0;
 		for (int j = 0; j < hotel.getListeChambres().length; j++) {
@@ -130,7 +135,7 @@ public class Hotel {
 		}
 	}
 
-	public void afficheEtatHotel(Hotel hotel) {
+	public void afficheEtatHotel(GestionChambre hotel) {
 		for (int i = 0; i < hotel.getListeChambres().length; i++) {
 			System.out.println("----------------------------------------------");
 			System.out.println("Chambre n° " + hotel.getListeChambres()[i].getNumero() + " "
@@ -164,7 +169,7 @@ public class Hotel {
 		System.out.println(listeChambres.length - ch.getReservee() - ch.getOcuppee());
 	}
 
-	public void afficherPremiereChambre(Hotel hotel) {
+	public void afficherPremiereChambre(GestionChambre hotel) {
 		for (int i = 0; i < hotel.listeChambres.length; i++) {
 			if (hotel.getListeChambres()[i] != null) {
 				int compteur = 0;
@@ -200,7 +205,7 @@ public class Hotel {
 		return found;
 	}
 
-	public void afficherDerniereChambre(Hotel hotel) {
+	public void afficherDerniereChambre(GestionChambre hotel) {
 		for (int i = hotel.listeChambres.length - 1; i >= 0; i--) {
 			int compteur = 0;
 			for (int j = 0; j < hotel.getListeChambres()[i].getListeReservation().length; j++) {
@@ -217,7 +222,7 @@ public class Hotel {
 
 	}
 
-	public void reserverChambre(Hotel hotel) {
+	public void reserverChambre(GestionChambre hotel) {
 		System.out.println("Bienvenue dans la reservation de chambre");
 		Client client = null;
 		Inscription inscription = new Inscription();

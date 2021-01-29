@@ -1,9 +1,9 @@
-
-package fr.afpa.main;
+package fr.afpa.beans;
 
 public class Chambre {
+	private static int reservee;
+	private static int ocuppee;
 	private int numero;
-	//private int indiceType;
 	private String nom;
 	private String superficie;
 	private String vue;
@@ -11,8 +11,7 @@ public class Chambre {
 	private String[] options;
 	private String occupation;
 	private Reservation[] listeReservation;
-	private static int reservee;
-	private static int ocuppee;
+	
 	private String etat;
 	private int nbChambre;
 	public static Chambre[] hotel;

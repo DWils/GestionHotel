@@ -2,11 +2,14 @@ package fr.afpa.main;
 
 import java.util.Scanner;
 
+import fr.afpa.services.GestionChambre;
+import fr.afpa.services.Inscription;
+
 public class Main {
 
 	public static void main(String[] args) {
 
-		Hotel hotel = new Hotel();
+		GestionChambre hotel = new GestionChambre();
 		String[] dataChambres = { "Type chambre;Taille;Vues;Occupation;tarif;Nombre;Options",
 				"Chambre Vue Piscine;44 metres carres;Piscine Centrale;2 adultes et 2 enfants de moins de 12 ans;300;7;Fer et planche a  repasser sur demande|Telephone |Television par cÃ¢ble|Climatisation|Bouilloire Ã©lectrique|Concierge 24h/24",
 				"Chambre Vue Jardin;44 metres carres;Jardin, Foret ou Golf;2 adultes et 2 enfants de moins de 12 ans;314;12;Fer et planche a  repasser sur demande|Telephone |Television par cable|Climatisation|Bouilloire Ã©lectrique|Concierge 24h/24",

@@ -1,8 +1,11 @@
-package fr.afpa.main;
+package fr.afpa.services;
 
 import java.util.Random;
 
 import java.util.Scanner;
+
+import fr.afpa.beans.Client;
+import fr.afpa.main.Entier;
 
 public class Inscription {
 	private String numero;
@@ -12,7 +15,7 @@ public class Inscription {
 	private String listReservation;
 	static String[] clientId = new String[50];
 	static Client[] file = new Client[50];
-	private static Hotel hotel = new Hotel();
+	private static GestionChambre hotel = new GestionChambre();
 
 	public void setId(String id) {
 
@@ -50,7 +53,7 @@ public class Inscription {
 		return user;
 	}
 
-	public static Client login(Hotel hotel) {
+	public static Client login(GestionChambre hotel) {
 		Client cl = new Client();
 		boolean client = false;
 		boolean exist = false;
@@ -112,7 +115,7 @@ public class Inscription {
 		System.out.println("_______________________________________________________________");
 	}
 
-	public static void employeMenu(Hotel hotel) {
+	public static void employeMenu(GestionChambre hotel) {
 		Scanner saisieUtilisateur = new Scanner(System.in);
 
 		
