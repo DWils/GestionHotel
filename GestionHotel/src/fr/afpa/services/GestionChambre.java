@@ -121,9 +121,10 @@ public class GestionChambre {
 			listeCategorieChambre[i].afficheCategorieChambre();
 			for (int j = 0; j < listeCategorieChambre[i].getListeChambres().length; j++) {
 				boolean flagResa = false;
+				listeCategorieChambre[i].getListeChambres()[j].afficherChambre();
 				for (int j2 = 0; j2 < listeCategorieChambre[i].getListeChambres()[j]
 						.getListeReservation().length; j2++) {
-					System.out.println(listeCategorieChambre[i].getListeChambres()[j].getNumero()+ " : "  );
+					
 					if (listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[j2] != null) {
 						listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[j2].afficherReservation();
 						flagResa = true;
@@ -226,14 +227,16 @@ public class GestionChambre {
 			System.out.println("Quelle chambre souhaitez-vous prendre ? (pour annuler votre demande tapez -1)");
 			key = saisieUtilisateur.nextInt();
 			if (key >= 1 && key <= 8) {
-				CategorieChambre typeChoisi = listeCategorieChambre[key - 1];
+				System.out.println("Vous avez choisi : ");
+				listeCategorieChambre[key - 1].afficheCategorieChambre();;
 				boolean flagResa = false;
-				for (int i = 0; i < typeChoisi.getListeChambres().length; i++) {
-					if (isChambreLibre(typeChoisi.getListeChambres()[i]) && !(flagResa)) {
+				for (int i = 0; i < listeCategorieChambre[key - 1].getListeChambres().length; i++) {
+					if (isChambreLibre(listeCategorieChambre[key - 1].getListeChambres()[i]) && !(flagResa)) {
 						System.out.println("Nous vous attribuons la chambre n° "
-								+ typeChoisi.getListeChambres()[i].getNumero() + "\n"
+								+ listeCategorieChambre[key - 1].getListeChambres()[i].getNumero() + "\n"
 								+ "Le montant de votre réservation est de "
-								+ typeChoisi.getTarif() * ChronoUnit.DAYS.between(dateDebutLD, dateFinLD) + " euros");
+								+ listeCategorieChambre[key - 1].getTarif() * (ChronoUnit.DAYS.between(dateDebutLD, dateFinLD)+1) + " euros");
+						
 						flagResa = true;
 					}
 				}
