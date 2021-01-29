@@ -88,7 +88,7 @@ public class GestionChambre {
 	public void afficheListeCategorieChambre() {
 		for (int i = 0; i < listeCategorieChambre.length; i++) {
 			boolean flagCat = false;
-			for (int j = 0; j < dataSplit.length; j++) {
+			for (int j = 0; j < listeCategorieChambre[i].getListeChambres().length; j++) {
 				if (isChambreLibre(listeCategorieChambre[i].getListeChambres()[j])) {
 					flagCat = true;
 				}
@@ -202,6 +202,9 @@ public class GestionChambre {
 	public void reserverChambre() {
 		System.out.println("Bienvenue dans la reservation de chambre");
 		Client client = null;
+		String str = null;
+		Scanner saisieUtilisateur = new Scanner(System.in);
+		
 		client = Inscription.inscrire();
 		System.out.println("Quel dates voulez-vous reserver ?");
 		do {
