@@ -16,7 +16,7 @@ public class Inscription {
 	static String[] clientId = new String[50];
 	static Client[] file = new Client[50];
 	private static GestionChambre hotel = new GestionChambre();
-
+	private static Client cl = new Client();
 	public void setId(String id) {
 
 		numero = id;
@@ -35,9 +35,12 @@ public class Inscription {
 	}
 
 	public static Client inscrire() {
-
-		String str = "";
+		String str2 = "*";
 		Scanner saisieUtilisateur = new Scanner(System.in);
+		System.out.println("Avez-vous un code ? Si oui veuillez nous le renseigner :");
+		str2 = saisieUtilisateur.next();
+		if(!(str2.equals(cl.getIdClient()))) {
+		String str = "";
 		Client user = new Client();
 		System.out.print("Inconnu.....Inscrivez vous, nom : ");
 		user.setNom(saisieUtilisateur.nextLine());
@@ -49,8 +52,9 @@ public class Inscription {
 		}
 		user.setIdClient(str);
 		System.out.println("Votre code est : " + str);
-
 		return user;
+		}
+		return cl;
 	}
 
 	public static Client login(GestionChambre hotel) {

@@ -55,6 +55,11 @@ public class Chambre {
 	}
 	
 	public void afficherChambre() {
-		System.out.println( );
+		System.out.println(numero);
+		for (int i = 0; i < listeReservation.length; i++) {
+			if(listeReservation[i] != null ) {
+				listeReservation[i].afficherReservation();
+			}
+		}
 	}
 }
