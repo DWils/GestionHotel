@@ -3,7 +3,7 @@ package fr.afpa.beans;
 import fr.afpa.services.GestionChambre;
 
 public class CategorieChambre {
-	private static int nbCategorie;
+	private static int nbCategorie = 1;
 	private int id;
 	private String nom;
 	private String superficie;

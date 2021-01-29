@@ -126,7 +126,7 @@ public class Inscription {
 			key = saisieUtilisateur.next();
 			switch (key) {
 			case "A":
-				hotel.afficheEtatHotel(hotel);
+				hotel.afficheEtatHotel();
 				break;
 			case "B":
 				hotel.afficherNbResa();
@@ -135,13 +135,13 @@ public class Inscription {
 				hotel.afficherNbLibre();
 				break;
 			case "D":
-				hotel.afficherPremiereChambre(hotel);
+				hotel.afficherPremiereChambre();
 				break;
 			case "E":
-				hotel.afficherDerniereChambre(hotel);
+				hotel.afficherDerniereChambre();
 				break;
 			case "F":
-				hotel.reserverChambre(hotel);
+				hotel.reserverChambre();
 
 			}
 		}
