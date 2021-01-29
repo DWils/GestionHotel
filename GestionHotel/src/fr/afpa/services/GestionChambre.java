@@ -69,7 +69,7 @@ public class GestionChambre {
 		// System.out.println(nbChambre); //Check up nombre total de chambre
 		listeCategorieChambre = new CategorieChambre[data.length - 1];
 		
-		chambre = new Chambre();
+		//chambre = new Chambre();
 		for (int i = 1; i < data.length; i++) {
 			dataSplit = data[i].split(";");
 			listeOptions = dataSplit[6].split("\\|");
@@ -77,8 +77,9 @@ public class GestionChambre {
 			listeCategorieChambre[i - 1] = new CategorieChambre(dataSplit[0], dataSplit[1], dataSplit[2], Float.parseFloat(dataSplit[4]) , listeOptions, dataSplit[3], listeChambres);
 			
 			for (int j = 0; j < Integer.parseInt(dataSplit[5]); j++) {
-				listeChambres[j - 1] = new Chambre();
+				listeCategorieChambre[i - 1].getListeChambres()[j] = new Chambre();
 			}
+			
 		}
 	}
 
@@ -149,12 +150,12 @@ public class GestionChambre {
 
 	public void afficherNbResa() {
 		Chambre ch = new Chambre();
-		System.out.println(ch.getReservee());
+		System.out.println(ch.nbReservee);
 	}
 
 	public void afficherNbLibre() {
 		Chambre ch = new Chambre();
-		System.out.println(listeChambres.length - ch.getReservee() - ch.getOcuppee());
+		System.out.println(listeChambres.length - ch.nbReservee - ch.nbOcuppee);
 	}
 
 	public void afficherPremiereChambre(GestionChambre hotel) {

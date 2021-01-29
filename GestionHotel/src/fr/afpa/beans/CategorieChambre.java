@@ -13,10 +13,7 @@ public class CategorieChambre {
 	private String occupation;
 	private Chambre[] listeChambres;
 
-	public CategorieChambre(String unNom, 
-			String uneSuperficie, String uneVue, 
-			float unTarif, String[] desOptions,
-			String uneOccupation, Chambre[] listeCh) {
+	public CategorieChambre(String unNom, String uneSuperficie, String uneVue, float unTarif, String[] desOptions, String uneOccupation, Chambre[] listeCh) {
 		id = nbCategorie;
 		nom = unNom;
 		superficie = uneSuperficie;
