@@ -116,7 +116,8 @@ public class GestionChambre {
 //						}
 //					}
 					if (!flagResa) {
-						System.out.println("Pas de réservation en cours");
+						System.out.println("Pas de rÃ©servation en cours");
+
 					}
 				}
 
@@ -213,13 +214,16 @@ public class GestionChambre {
 			System.out.println("Quelle chambre souhaitez-vous prendre ? (pour annuler votre demande tapez -1)");
 			key = saisieUtilisateur.nextInt();
 			if (key >= 1 && key <= 8) {
+
+				System.out.println("Vous avez choisi : ");
 				listeCategorieChambre[key - 1].afficheCategorieChambre();
 				boolean flagResa = false;
 				for (int i = 0; i < listeCategorieChambre[key - 1].getListeChambres().length; i++) {
 					if (isChambreLibre(listeCategorieChambre[key - 1].getListeChambres()[i]) && !(flagResa)) {
-						System.out.println("Nous vous attribuons la chambre n° "
+						System.out.println("Nous vous attribuons la chambre nÂ° "
 								+ listeCategorieChambre[key - 1].getListeChambres()[i].getNumero() + "\n"
-								+ "Le montant de votre réservation est de " + listeCategorieChambre[key - 1].getTarif()
+
+								+ "Le montant de votre rÃ©servation est de " + listeCategorieChambre[key - 1].getTarif()
 										* ChronoUnit.DAYS.between(dateDebutLD, dateFinLD)
 								+ " euros");
 						for (int j = 0; j < listeCategorieChambre[key - 1].getListeChambres()[i]
