@@ -16,7 +16,6 @@ public class Chambre {
 	}
 	
 	public Chambre() {
-		numero = 0;
 		setNbChambre(1);
 		listeReservation = new Reservation[3];
 		etat = "libre";

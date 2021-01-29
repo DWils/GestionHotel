@@ -158,7 +158,7 @@ public class Inscription {
 	public static void ListAt() {
 		for (int i = 0; i < file.length; i++) {
 			if (file[i] != null) {
-				System.out.println("client nï¿½" + i + " --->" + file[i]);
+				System.out.println("client n°" + i + " --->" + file[i]);
 			}
 		}
 	}
