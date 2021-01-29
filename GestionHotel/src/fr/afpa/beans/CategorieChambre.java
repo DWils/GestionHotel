@@ -3,7 +3,7 @@ package fr.afpa.beans;
 import fr.afpa.services.GestionChambre;
 
 public class CategorieChambre {
-	private static int nbCategorie;
+	private static int nbCategorie = 1;
 	private int id;
 	private String nom;
 	private String superficie;
@@ -13,10 +13,7 @@ public class CategorieChambre {
 	private String occupation;
 	private Chambre[] listeChambres;
 
-	public CategorieChambre(String unNom, 
-			String uneSuperficie, String uneVue, 
-			float unTarif, String[] desOptions,
-			String uneOccupation, Chambre[] listeCh) {
+	public CategorieChambre(String unNom, String uneSuperficie, String uneVue, float unTarif, String[] desOptions, String uneOccupation, Chambre[] listeCh) {
 		id = nbCategorie;
 		nom = unNom;
 		superficie = uneSuperficie;

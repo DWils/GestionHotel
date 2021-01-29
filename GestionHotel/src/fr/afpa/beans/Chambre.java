@@ -1,9 +1,9 @@
 package fr.afpa.beans;
 
 public class Chambre {
-	private static int nbChambre;
-	private static int nbReservee;
-	private static int nbOcuppee;
+	private static int nbChambre = 1;
+	public static int nbReservee;
+	public static int nbOcuppee;
 	private int numero;
 	private Reservation[] listeReservation;
 	private String etat;
@@ -12,6 +12,7 @@ public class Chambre {
 		numero = nbChambre;
 		listeReservation = listeR;
 		etat = unEtat;	
+		nbChambre++;
 	}
 	
 	public Chambre() {
