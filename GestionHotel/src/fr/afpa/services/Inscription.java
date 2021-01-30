@@ -146,6 +146,10 @@ public class Inscription {
 				break;
 			case "F":
 				hotel.reserverChambre();
+				break;
+			case "G":
+				hotel.libererChambre();
+				break;
 
 			}
 		}

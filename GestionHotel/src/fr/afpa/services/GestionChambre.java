@@ -106,7 +106,7 @@ public class GestionChambre {
 			for (int j = 0; j < listeCategorieChambre[i].getListeChambres().length; j++) {
 				if (listeCategorieChambre[i].getListeChambres()[j] != null) {
 					// afficher chambre va nous afficher la chambre avec les réservations
-					listeCategorieChambre[i].getListeChambres()[j].afficherChambre();	
+					listeCategorieChambre[i].getListeChambres()[j].afficherChambre();
 				}
 
 			}
@@ -259,31 +259,51 @@ public class GestionChambre {
 		System.out.println("                               03 00 00 00 00");
 		System.out.println("\n");
 		System.out.print("Type de chambre");
-        for (int i = 0; i < 15; i++) {
-        	System.out.print(" ");
-        }  
-        System.out.print("nombre de nuités"); 
-        for (int i = 0; i < 15; i++) {
-        	System.out.print(" ");
-        }                     
-        System.out.print("Prix Unitaire");
-        System.out.println("\n");
- 
-        System.out.print(catChambre.getNom());
-        for (int i = 0; i < 15; i++) {
-        	System.out.print(" ");
-        } 
-        System.out.print(nuite);
-        for (int i = 0; i < 20; i++) {
-        	System.out.print(" ");
-        } 
-        System.out.print(catChambre.getTarif());
-        System.out.println("\n");
-             
-        System.out.println("Total :" + total);
+		for (int i = 0; i < 15; i++) {
+			System.out.print(" ");
+		}
+		System.out.print("nombre de nuités");
+		for (int i = 0; i < 15; i++) {
+			System.out.print(" ");
+		}
+		System.out.print("Prix Unitaire");
+		System.out.println("\n");
+
+		System.out.print(catChambre.getNom());
+		for (int i = 0; i < 15; i++) {
+			System.out.print(" ");
+		}
+		System.out.print(nuite);
+		for (int i = 0; i < 20; i++) {
+			System.out.print(" ");
+		}
+		System.out.print(catChambre.getTarif());
+		System.out.println("\n");
+
+		System.out.println("Total :" + total);
 	}
 
-	public void libererChambre(String info) {
+	public void libererChambre() {
+		String nomClient = null;
+		System.out.println("Renseignez le nom du Client : ");
+		nomClient = saisieUtilisateur.next();
+
+		for (int i = 0; i < listeCategorieChambre.length; i++) {
+			if (listeCategorieChambre[i] != null) {
+				for (int j = 0; j < listeCategorieChambre[i].getListeChambres().length; j++) {
+					if (listeCategorieChambre[i].getListeChambres()[j] != null) {
+						for (int x = 0; x < chambre.getListeReservation().length; x++) {
+							if (listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x] != null) {
+								if (listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x].getClient().getNom().equalsIgnoreCase(nomClient)) {
+									listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x] = null;
+									Chambre.nbReservee--;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 
 	}
 
