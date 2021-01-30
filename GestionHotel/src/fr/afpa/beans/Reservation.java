@@ -43,12 +43,6 @@ public class Reservation {
 		client = cl;
 	}
 	
-	public void afficherReservation() {
-		
-		System.out.println(client.getIdClient() + " " + client.getNom() + " du " 
-				+ dateDebut + " au " + dateFin + " pour un montant de " + facture);
-	}
-
 	public float getFacture() {
 		return facture;
 	}
@@ -56,4 +50,13 @@ public class Reservation {
 	public void setFacture(float facture) {
 		this.facture = facture;
 	}
+	
+	public void afficherReservation() {
+		
+		System.out.println(client.getIdClient() + " " + client.getNom() + " du " 
+				+ dateDebut + " au " + dateFin + " pour un montant de " + facture);
+	}
+
+	
+	
 }

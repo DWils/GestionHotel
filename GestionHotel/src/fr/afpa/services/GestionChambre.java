@@ -191,37 +191,50 @@ public class GestionChambre {
 		Client client = null;
 		String str = null;
 		Scanner saisieUtilisateur = new Scanner(System.in);
-
+		// Passage dans le systeme d'inscription, si le client a déjà réservation, on
+		// récupère ses informations
 		client = Inscription.inscrire();
 		System.out.println("Quel dates voulez-vous reserver ?");
 		do {
 			System.out.println("date de debut :(Respectez le format : jj/mm/aaaa)");
 			String dateDebut = saisieUtilisateur.nextLine();
 			dateDebutLD = LocalDate.parse(dateDebut, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-
+			// notre client doit entrer une date postérieur à aujourd'hui, sinon il
+			// recommence sa saisie
 		} while (dateDebutLD.isBefore(LocalDate.now()));
 
 		do {
 			System.out.println("date de fin :(Respectez le format : jj/mm/aaaa)");
 			String dateFin = saisieUtilisateur.nextLine();
 			dateFinLD = LocalDate.parse(dateFin, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			// notre client doit entrer une date postérieur à aujourd'hui et la date de
+			// début, sinon il recommence sa saisie
 		} while ((dateFinLD.isBefore(LocalDate.now())) || (dateFinLD.isBefore(dateDebutLD)));
 
 		int key = 0;
+		// si la clé est -1 on quitte la réservation
 		while (key != -1) {
 			afficheListeCategorieChambre();
+			// on donne le choix au client d'annuler sa demande réservation
 			System.out.println("Quelle chambre souhaitez-vous prendre ? (pour annuler votre demande tapez -1)");
 			key = saisieUtilisateur.nextInt();
+			// les clés de 1 à 8 correspondent aux types de chambres
 			if (key >= 1 && key <= 8) {
 				listeCategorieChambre[key - 1].afficheCategorieChambre();
 				boolean flagResa = false;
 				for (int i = 0; i < listeCategorieChambre[key - 1].getListeChambres().length; i++) {
+					// la condition est valable si la chambre que nous proposons est libre et qu'on
+					// a pas encore effectué la réservation
 					if (isChambreLibre(listeCategorieChambre[key - 1].getListeChambres()[i]) && !(flagResa)) {
 						System.out.println("Nous vous attribuons la chambre n° "
 								+ listeCategorieChambre[key - 1].getListeChambres()[i].getNumero() + "\n"
 								+ "Le montant de votre réservation est de " + listeCategorieChambre[key - 1].getTarif()
 										* ChronoUnit.DAYS.between(dateDebutLD, dateFinLD)
 								+ " euros");
+						System.out.println("Veuillez renseigner le numero de votre carte : ");
+						String code = saisieUtilisateur.next();
+						afficheFacture(listeCategorieChambre[key - 1], dateDebutLD, dateFinLD);
+
 						for (int j = 0; j < listeCategorieChambre[key - 1].getListeChambres()[i]
 								.getListeReservation().length; j++) {
 							if (listeCategorieChambre[key - 1].getListeChambres()[i].getListeReservation()[j] == null) {
@@ -240,6 +253,44 @@ public class GestionChambre {
 			}
 			key = -1;
 		}
+	}
+
+	public void afficheFacture(CategorieChambre catChambre, LocalDate dateDebutLD, LocalDate dateFinLD) {
+		long nuite = ChronoUnit.DAYS.between(dateDebutLD, dateFinLD);
+		float total = catChambre.getTarif() * nuite;
+		System.out.println("                                AFPA-Hotel");
+		System.out.println("\n");
+		System.out.println("                               www.cda-JAVA.fr");
+		System.out.println("\n");
+		System.out.println("                               03 00 00 00 00");
+		System.out.println("\n");
+		System.out.print("Type de chambre");
+        for (int i = 0; i < 15; i++) {
+        	System.out.print(" ");
+        }  
+        System.out.print("nombre de nuités"); 
+        for (int i = 0; i < 15; i++) {
+        	System.out.print(" ");
+        }                     
+        System.out.print("Prix Unitaire");
+        System.out.println("\n");
+ 
+        System.out.print(catChambre.getNom());
+        for (int i = 0; i < 15; i++) {
+        	System.out.print(" ");
+        } 
+        System.out.print(nuite);
+        for (int i = 0; i < 15; i++) {
+        	System.out.print(" ");
+        } 
+        System.out.print(catChambre.getTarif());
+        System.out.println("\n");
+             
+        System.out.println("Total :" + total);
+	}
+
+	public void libererChambre(String info) {
+
 	}
 
 }
