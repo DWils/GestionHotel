@@ -274,7 +274,7 @@ public class GestionChambre {
         	System.out.print(" ");
         } 
         System.out.print(nuite);
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 20; i++) {
         	System.out.print(" ");
         } 
         System.out.print(catChambre.getTarif());
