@@ -105,20 +105,8 @@ public class GestionChambre {
 			listeCategorieChambre[i].afficheCategorieChambre();
 			for (int j = 0; j < listeCategorieChambre[i].getListeChambres().length; j++) {
 				if (listeCategorieChambre[i].getListeChambres()[j] != null) {
-					boolean flagResa = false;
-					listeCategorieChambre[i].getListeChambres()[j].afficherChambre();
-//					for (int j2 = 0; j2 < listeCategorieChambre[i].getListeChambres()[j]
-//							.getListeReservation().length; j2++) {
-//
-//						if (listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[j2] != null) {
-//							listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[j2].afficherReservation();
-//							flagResa = true;
-//						}
-//					}
-					if (!flagResa) {
-						System.out.println("Pas de rÃ©servation en cours");
-
-					}
+					// afficher chambre va nous afficher la chambre avec les réservations
+					listeCategorieChambre[i].getListeChambres()[j].afficherChambre();	
 				}
 
 			}
@@ -152,6 +140,7 @@ public class GestionChambre {
 	}
 
 	public boolean isChambreLibre(Chambre chambre) {
+		// la chambre libre ne possède pas de réservation
 		boolean found = false;
 		if (chambre != null) {
 			int compteur = 0;
@@ -169,6 +158,7 @@ public class GestionChambre {
 	}
 
 	public void afficherDerniereChambre() {
+		// affiche la dernière chambre en commençant part analyser le dernier type
 		for (int i = listeCategorieChambre.length - 1; i >= 0; i--) {
 			if (listeCategorieChambre[i] != null) {
 				for (int j = listeCategorieChambre[i].getListeChambres().length; j >= 0; j--) {
