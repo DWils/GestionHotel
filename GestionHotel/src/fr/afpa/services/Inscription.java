@@ -74,7 +74,7 @@ public class Inscription {
 				Clientmenu();
 
 			} else {
-				System.out.print("Erreur d'authentification ,Rï¿½ï¿½sasayer ou inscrvez vous:");
+				System.out.print("Erreur d'authentification ,Reessayer ou inscrvez vous:");
 				cl = inscrire();
 
 			}
@@ -116,6 +116,7 @@ public class Inscription {
 		System.out.println("   H- Modifier une reservation");
 		System.out.println("   I- Annuler une reservation");
 		System.out.println("   J- Afficher le CA à une date donnée");
+		System.out.println("   Q- Quitter");
 		System.out.println("_______________________________________________________________");
 	}
 
