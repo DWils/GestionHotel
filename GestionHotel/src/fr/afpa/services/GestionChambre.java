@@ -180,7 +180,7 @@ public class GestionChambre {
 	public void reserverChambre() {
 		System.out.println("Bienvenue dans la reservation de chambre");
 		Client client = null;
-		String str = null;
+		//String str = null;
 		Scanner saisieUtilisateur = new Scanner(System.in);
 		// Passage dans le systeme d'inscription, si le client a déjà réservation, on
 		// récupère ses informations
@@ -219,11 +219,11 @@ public class GestionChambre {
 					// la condition est valable si la chambre que nous proposons est libre et qu'on
 					// a pas encore effectué la réservation
 					if (isChambreLibre(listeCategorieChambre[key - 1].getListeChambres()[i]) && !(flagResa)) {
-						System.out.println("Nous vous attribuons la chambre nÂ° "
+						System.out.println("Nous vous attribuons la chambre n° "
 								+ listeCategorieChambre[key - 1].getListeChambres()[i].getNumero() + "\n"
 
-								+ "Le montant de votre rÃ©servation est de " + listeCategorieChambre[key - 1].getTarif()
-										* ChronoUnit.DAYS.between(dateDebutLD, dateFinLD)
+								+ "Le montant de votre reservation est de " + listeCategorieChambre[key - 1].getTarif()
+										* (ChronoUnit.DAYS.between(dateDebutLD, dateFinLD)+1)
 								+ " euros");
 						System.out.println("Veuillez renseigner le numero de votre carte : ");
 						String code = saisieUtilisateur.next();
@@ -232,10 +232,7 @@ public class GestionChambre {
 						for (int j = 0; j < listeCategorieChambre[key - 1].getListeChambres()[i]
 								.getListeReservation().length; j++) {
 							if (listeCategorieChambre[key - 1].getListeChambres()[i].getListeReservation()[j] == null) {
-								listeCategorieChambre[key - 1].getListeChambres()[i]
-										.getListeReservation()[j] = new Reservation(dateDebutLD, dateFinLD, client,
-												(listeCategorieChambre[key - 1].getTarif()
-														* ChronoUnit.DAYS.between(dateDebutLD, dateFinLD)));
+								listeCategorieChambre[key - 1].getListeChambres()[i].getListeReservation()[j] = new Reservation(dateDebutLD, dateFinLD, client, listeCategorieChambre[key - 1].getListeChambres()[i] , listeCategorieChambre[key - 1] );
 								Chambre.nbReservee++;
 								break;
 							}
@@ -250,7 +247,7 @@ public class GestionChambre {
 	}
 
 	public void afficheFacture(CategorieChambre catChambre, LocalDate dateDebutLD, LocalDate dateFinLD) {
-		long nuite = ChronoUnit.DAYS.between(dateDebutLD, dateFinLD);
+		long nuite = (ChronoUnit.DAYS.between(dateDebutLD, dateFinLD)+1);
 		float total = catChambre.getTarif() * nuite;
 		System.out.println("                                AFPA-Hotel");
 		System.out.println("\n");
