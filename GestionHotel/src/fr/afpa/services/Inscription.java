@@ -43,9 +43,9 @@ public class Inscription {
 		String str = "";
 		Client user = new Client();
 		System.out.print("Inconnu.....Inscrivez vous, nom : ");
-		user.setNom(saisieUtilisateur.nextLine());
+		user.setNom(saisieUtilisateur.next());
 		System.out.print("... prenom : ");
-		user.setPrenom(saisieUtilisateur.nextLine());
+		user.setPrenom(saisieUtilisateur.next());
 		for (int i = 0; i < 10; i++) {
 			String code = Integer.toString((int) (Math.random() * 9) + 0);
 			str = str + code;
@@ -146,6 +146,10 @@ public class Inscription {
 				break;
 			case "F":
 				hotel.reserverChambre();
+				break;
+			case "G":
+				hotel.libererChambre();
+				break;
 
 			}
 		}
