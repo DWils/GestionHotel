@@ -178,7 +178,7 @@ public class GestionChambre {
 	}
 
 	public void reserverChambre() {
-		
+
 		System.out.println("Bienvenue dans la reservation de chambre");
 		Client client = null;
 		// String str = null;
@@ -232,7 +232,7 @@ public class GestionChambre {
 												+ " euros");
 						System.out.println("Veuillez renseigner le numero de votre carte : ");
 						String code = saisieUtilisateur.next();
-						afficheFacture(listeCategorieChambre[key - 1], dateDebutLD, dateFinLD , 0f);
+						afficheFacture(listeCategorieChambre[key - 1], dateDebutLD, dateFinLD, 0f);
 
 						for (int j = 0; j < listeCategorieChambre[key - 1].getListeChambres()[i]
 								.getListeReservation().length; j++) {
@@ -253,9 +253,9 @@ public class GestionChambre {
 			key = -1;
 		}
 	}
+
 	public void annulerReservation() {
-		
-	
+
 		String nomClient = null;
 		System.out.println("Renseignez le nom du Client : ");
 		nomClient = saisieUtilisateur.next();
@@ -276,13 +276,15 @@ public class GestionChambre {
 					}
 				}
 			}
-			
+
 		}
 
-		
 		System.out.println("On vous remboursera sous peu on espere ");
 	}
+
 	public void modifierReservation() {
+		LocalDate dateDebut = null;
+		LocalDate dateFin = null;
 		LocalDate lastDate = null;
 		LocalDate newDate = null;
 		// ancien montant de la réservation
@@ -297,29 +299,32 @@ public class GestionChambre {
 							if (listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x] != null) {
 								if (listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x].getClient()
 										.getNom().equalsIgnoreCase(nomClient)) {
-									LocalDate dateDebut = listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x].getDateDebut();
-									LocalDate dateFin = listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x].getDateFin();
-									currentTarif = listeCategorieChambre[i].getTarif()*(ChronoUnit.DAYS.between(dateDebutLD, dateFinLD) + 1);
+									dateDebut = listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x]
+											.getDateDebut();
+									dateFin = listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x]
+											.getDateFin();
+									currentTarif = listeCategorieChambre[i].getTarif()
+											* (ChronoUnit.DAYS.between(dateDebutLD, dateFinLD) + 1);
 									do {
 										System.out.println("Renseignez la nouvelle date de debut : ");
 										String newDatestring;
 										newDatestring = saisieUtilisateur.next();
-										 newDate = LocalDate.parse(newDatestring,
+										newDate = LocalDate.parse(newDatestring,
 												DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 										listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x]
 												.setDateDebut(newDate);
 									} while (newDate.isBefore(LocalDate.now()));
 									do {
-									System.out.println("Renseignez la nouvelle date de fin : ");
-									String lastDatestring;
-									lastDatestring = saisieUtilisateur.next();
-									 lastDate = LocalDate.parse(lastDatestring,
-											DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-									listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x]
-											.setDateFin(lastDate);}
-									while (lastDate.isBefore(LocalDate.now()));
-									
-											afficheFacture( listeCategorieChambre[i] , newDate, lastDate, currentTarif);
+										System.out.println("Renseignez la nouvelle date de fin : ");
+										String lastDatestring;
+										lastDatestring = saisieUtilisateur.next();
+										lastDate = LocalDate.parse(lastDatestring,
+												DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+										listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x]
+												.setDateFin(lastDate);
+									} while (lastDate.isBefore(LocalDate.now()));
+
+									afficheFacture(listeCategorieChambre[i], newDate, lastDate, currentTarif);
 								}
 							}
 						}
@@ -327,10 +332,11 @@ public class GestionChambre {
 				}
 			}
 		}
-		
+
 	}
 
-	public void afficheFacture(CategorieChambre catChambre, LocalDate dateDebutLD, LocalDate dateFinLD, float currentTarif) {
+	public void afficheFacture(CategorieChambre catChambre, LocalDate dateDebutLD, LocalDate dateFinLD,
+			float currentTarif) {
 		long nuite = (ChronoUnit.DAYS.between(dateDebutLD, dateFinLD) + 1);
 		float total = catChambre.getTarif() * nuite;
 		System.out.println("                                AFPA-Hotel");
@@ -360,13 +366,12 @@ public class GestionChambre {
 		}
 		System.out.print(catChambre.getTarif());
 		System.out.println("\n");
-		if(currentTarif == 0f){
+		if (currentTarif == 0f) {
 			System.out.println("Total :" + total);
-		}else if (currentTarif > total){
-			System.out.println("Total remboursé :" + (currentTarif - total) );
-		}
-		else{
-			System.out.println("Reste à payer :" + (total - currentTarif) );
+		} else if (currentTarif > total) {
+			System.out.println("Total remboursé :" + (currentTarif - total));
+		} else {
+			System.out.println("Reste à payer :" + (total - currentTarif));
 		}
 	}
 
@@ -396,8 +401,31 @@ public class GestionChambre {
 	}
 
 	public void afficherCa() {
-		// TODO Auto-generated method stub
-		
+		String dateString = "";
+		LocalDate date = null;
+		float ca = 0f;
+		System.out.println("Renseignez la nouvelle date de debut : ");
+		dateString = saisieUtilisateur.next();
+		date = LocalDate.parse(dateString, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		for (int i = 0; i < listeCategorieChambre.length; i++) {
+			if (listeCategorieChambre[i] != null) {
+				for (int j = 0; j < listeCategorieChambre[i].getListeChambres().length; j++) {
+					if (listeCategorieChambre[i].getListeChambres()[j] != null) {
+						for (int x = 0; x < chambre.getListeReservation().length; x++) {
+							if (listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x] != null) {
+								if (date.equals(listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x].getDateDebut()) ||
+								date.equals(listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x].getDateFin())
+								|| date.isBefore(listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x].getDateFin()) ||
+								date.isAfter(listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x].getDateDebut() )) {
+									ca += listeCategorieChambre[i].getTarif();
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		System.out.println("Le Chiffre d'affaire de la date : " + date + " est de : " + ca + " euros");
 	}
 
 	public Reservation rechercheClientParId(String demande) {
@@ -407,7 +435,8 @@ public class GestionChambre {
 					if (listeCategorieChambre[i].getListeChambres()[j] != null) {
 						for (int x = 0; x < chambre.getListeReservation().length; x++) {
 							if (listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x] != null) {
-								if (listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x].getClient().getIdClient().equalsIgnoreCase(demande)) {
+								if (listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x].getClient()
+										.getIdClient().equalsIgnoreCase(demande)) {
 									return listeCategorieChambre[i].getListeChambres()[j].getListeReservation()[x];
 								}
 							}
@@ -417,7 +446,7 @@ public class GestionChambre {
 			}
 		}
 		return null;
-		
+
 	}
 
 }

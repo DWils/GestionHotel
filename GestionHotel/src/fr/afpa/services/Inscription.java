@@ -79,7 +79,6 @@ public class Inscription {
 			Reservation resa = hotel.rechercheClientParId(demande);
 			if( resa != null){
 				resa.afficherReservation();
-				System.out.println("__________________________");
 				Inscription.login(hotel);
 			}
 			
@@ -100,7 +99,7 @@ public class Inscription {
 	public static void affichageMenu() {
 		System.out.println("_____________________MENU HOTEL CDA JAVA _____________________");
 		System.out.println("   A- Afficher l'état de l'hotel");
-		System.out.println("   B- Afficher le nombre de chambres rï¿½servï¿½es");
+		System.out.println("   B- Afficher le nombre de chambres reservees");
 		System.out.println("   C- Afficher le nombre de chambre libre");
 		System.out.println("   D- Afficher le numero de la première chambre vide");
 		System.out.println("   E- Afficher le numero de la dernière chambre vide");
